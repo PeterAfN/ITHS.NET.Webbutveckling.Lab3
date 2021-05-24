@@ -10,8 +10,8 @@ json-server --watch "data\courses.json"      (du ska stå i roten av huvudmappen
  
 Denna lab ingick i kursen "Webbutveckling med .NET 60p" på IT-Högskolan i Göteborg som jag läste våren år 2021.
 
-## Uppgiftsbeskrivningen för labben:
-#### Inlämningsuppgift 3 - I denna sista uppgift skall vi implementera databashantering och REST API i vår Westcoast Education applikation.
+## Uppgiftsbeskrivningen för labb 3:
+I denna sista uppgift skall vi implementera databashantering och REST API i vår Westcoast Education applikation.
 Kunden är väldigt nöjd med vad vi så här långt har byggt åt dem.
 
 De har nu ett nytt krav. Det vill att vi utvecklar ett REST Api och de vill att vi gör det med Microsoft .NET 5.0 teknologier.
