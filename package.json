@@ -1,0 +1,22 @@
+{
+  "name": "lab1web",
+  "version": "1.0.0",
+  "description": "lab 1 i webbutveckling av Peter Palosaari",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PeterAfN/ITHS.NET.Webbutveckling.Lab1.git"
+  },
+  "author": "Peter Palosaari",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/PeterAfN/ITHS.NET.Webbutveckling.Lab1/issues"
+  },
+  "homepage": "https://github.com/PeterAfN/ITHS.NET.Webbutveckling.Lab1#readme",
+  "dependencies": {
+    "json-server": "^0.16.3"
+  }
+}

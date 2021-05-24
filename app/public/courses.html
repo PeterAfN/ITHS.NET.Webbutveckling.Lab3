@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../../content/css/navigation.css" />
+    <link rel="stylesheet" href="../../content/css/colors.css" />
+    <link rel="stylesheet" href="../../content/css/landing-page.css" />
+    <link rel="stylesheet" href="../../content/css/styles.css" />
+    <link rel="stylesheet" href="../../content/css/utilities.css" />
+    <link rel="stylesheet" href="../../content/css/courses.css" />
+    <!--#region - media queries -->
+    <link
+      rel="stylesheet"
+      media="screen and (max-width: 580px)"
+      href="../../content/css/mobile.css"
+    />
+    <link
+      rel="stylesheet"
+      media="screen and (max-width: 322px)"
+      href="../../content/css/mobileSmall.css"
+    />
+    <!--#endregion - media queries -->
+    <!--#region - icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"
+      integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w=="
+      crossorigin="anonymous"
+    />
+    <!--#endregion - icons -->
+    <!--#region - fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <!--#endregion - fonts -->
+    <title>WestCoast Education</title>
+  </head>
+  <body>
+    <header>
+      <!--#region - ShoppingCartBar.js -->
+      <nav class="navbar">
+        <ul>
+          <li><a href="../../index.html">Start</a></li>
+          <li><a href="./courses.html" class="active">Kurser</a></li>
+        </ul>
+        <h2 class="logo">
+          <span class="text-primary"
+            ><i class="fas fa-university"></i> WestCoast
+          </span>
+          Education<sup>&reg;</sup>
+        </h2>
+      </nav>
+      <!--#endregion - ShoppingCartBar.js -->
+      <!--#region - Add.js -->
+      <div class="modal-overlay-add close-overlay-add"></div>
+      <div class="modal-add closed-add">
+        <button id="close-button-add">&times;</button>
+        <section id="add-container">
+
+          <form>
+            <p>Add a new course</p>
+            <!-- <input id="id" type="text" class="form-control" placeholder="Id" /> -->
+            <input
+              id="title"
+              type="text"
+              class="form-control"
+              placeholder="Title"
+            />
+            <input
+              id="description"
+              type="text"
+              class="form-control"
+              placeholder="Description"
+            />
+            <input
+              id="category"
+              type="text"
+              class="form-control"
+              placeholder="Category"
+            />
+            <input
+              id="length"
+              type="text"
+              class="form-control"
+              placeholder="Length"
+            />
+            <input
+              id="type"
+              type="text"
+              class="form-control"
+              placeholder="Type"
+            />
+            <input
+              id="price"
+              type="text"
+              class="form-control"
+              placeholder="Price"
+            />
+            <div class="buttons">
+              <button class="btn" id="save">Save</button>
+              <button class="btn" id="cancel">Cancel</button>
+            </div>
+          </form>
+        </section>
+      </div>
+      <!--#endregion - Add.js -->
+      <!--#region - ShoppingCart.js -->
+      <div class="modal-overlay-shopping-cart closed-shopping-cart"></div>
+      <div class="modal-shopping-cart closed-shopping-cart">
+        <button id="close-button">&times;</button>
+        <div class="modal-guts">
+          <div class="modal-title">
+            <i class="fas fa-shopping-cart"></i> Kundvagn
+          </div>
+          <table>
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Kurs</th>
+                <th>Pris</th>
+                <th>Antal</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody id="shopping-cart-content"></tbody>
+          </table>
+          <div>
+            <p>Totalpris <span class="price-total">0</span> kr</p>
+          </div>
+          <div class="to-payment">
+            <a class="btn">Köp</a>
+          </div>
+        </div>
+      </div>
+      <!--#endregion - ShoppingCart.js -->
+      <!--#region - Buy.js -->
+      <div class="modal-overlay-buy close-overlay-buy"></div>
+      <div class="modal-buy closed-buy">
+        <p>
+          Tack för ditt köp! Du kommer att få ett bekräftelsemail som bekräftar
+          köpet!
+        </p>
+        <button id="close-button-buy">&times;</button>
+        <div class="ok-buy-confirmation">
+          <a class="btn">Stäng</a>
+        </div>
+      </div>
+      <!--#endregion - Buy.js -->
+      <!--#region - ShoppingCartBar.js -->
+      <section id="shopping-cart-bar">
+        <a id="add-button">
+          <i class="far fa-plus-square"></i> Lägg till kurs (admin)
+        </a>
+        <a id="open-button">
+          <i class="fas fa-shopping-cart"></i> Kundvagn (
+          <span class="items-cart-ctr"></span>
+          )
+        </a>
+      </section>
+      <!--#endregion - ShoppingCartBar.js -->
+    </header>
+    <main>
+      <!--#region - Courses.js -->
+      <section>
+        <section>
+          <div class="table-courses-container">
+            <table>
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Kurs</th>
+                  <th>Beskrivning</th>
+                  <th>Kategori</th>
+                  <th>Längd</th>
+                  <th>Kurstyp</th>
+                  <th>Pris</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody id="table-courses-content"></tbody>
+            </table>
+          </div>
+        </section>
+      </section>
+      <!--#endregion - Courses.js -->
+    </main>
+    <footer id="main-footer">
+      <div class="grid-items-autofit-same-size">
+        <div>
+          <h3>Nyhetsbrev</h3>
+          <p>
+            Prenumera på vårat nyhetsbrev för att inte missa bra erbjudanden och
+            information om nya kurser.
+          </p>
+          <form>
+            <input
+              class="subscribe-email-input"
+              type="email"
+              placeholder="Ange din e-post..."
+            />
+            <input
+              type="submit"
+              value="Prenumerera"
+              class="subscribe-btn btn"
+            />
+          </form>
+        </div>
+        <div>
+          <h3>Länkar</h3>
+          <ul class="list">
+            <li><a href="#">Support & Hjälp</a></li>
+            <li><a href="#">Om Oss</a></li>
+            <li><a href="#">Kontakta Oss</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3>Registrering</h3>
+          <p>Registrera dig för att kunna köpa kurser.</p>
+          <a href="#" class="register-btn">Registrera</a>
+        </div>
+      </div>
+      <p>WestCoast Education &copy; 2021, All Rights Reserved</p>
+    </footer>
+    <script src="../../scripts/ShoppingCartBar.js"></script>
+    <script src="../../scripts/ShoppingCart.js"></script>
+    <script src="../../scripts/Buy.js"></script>
+    <script src="../../scripts/Add.js"></script>
+    <script src="../../scripts/Courses.js"></script>
+    <script src="/app.js"></script>
+  </body>
+</html>

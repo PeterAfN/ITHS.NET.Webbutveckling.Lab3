@@ -1,0 +1,21 @@
+/******* navbar *******/
+.navbar {
+  height: 7rem;
+  text-align: center;
+}
+
+.navbar a {
+  padding: 0.2rem;
+  margin: 1rem 0rem;
+}
+
+/******* landing *******/
+.landing .content h1 {
+  font-size: 1.6rem;
+  font-weight: 200;
+}
+
+.landing .content p {
+  font-size: 1rem;
+  margin: 1.1rem 0 1rem;
+}

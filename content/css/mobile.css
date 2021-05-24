@@ -1,0 +1,75 @@
+/******* Navbar *******/
+.navbar {
+  flex-direction: column;
+  width: 100%;
+  height: 6.8rem;
+  padding: 1.5rem;
+  align-items: center;
+  justify-content: center;
+}
+
+.navbar a {
+  padding: 0.4rem;
+  margin: 1rem 0rem;
+}
+
+/******* Flex *******/
+.flex-items-row-direction {
+  flex-direction: column;
+}
+
+.flex-items-row-direction h3 {
+  font-size: 0.95rem;
+}
+
+.flex-items-row-direction p {
+  font-size: 0.95rem;
+}
+
+/******* landing *******/
+.landing .content h1 {
+  font-size: 2.1rem;
+  font-weight: 300;
+}
+
+.landing .content p {
+  font-size: 1.12rem;
+  margin: 1.3rem 0 2rem;
+}
+
+.landing .content a {
+  padding: 0.8rem;
+  font-size: smaller;
+}
+
+/******* landing *******/
+.small-images > ul > li > p {
+  font-size: 0.9rem;
+}
+
+.small-images > ul > li > a {
+  font-size: 0.9rem;
+}
+
+.small-images > ul > li > figure > figcaption > h3 {
+  font-size: 1.15rem;
+}
+
+/******* footer *******/
+#main-footer h3 {
+  font-size: 1rem;
+}
+
+#main-footer p,
+#main-footer a {
+  font-size: 0.8rem;
+}
+
+#main-footer .register-btn {
+  padding: 0.7rem;
+}
+
+#main-footer input[type="submit"] {
+  padding: 0.7rem;
+  font-size: 0.8rem;
+}

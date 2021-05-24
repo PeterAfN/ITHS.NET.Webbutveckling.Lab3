@@ -1,0 +1,445 @@
+{
+  "kurser": [
+    {
+      "id": 1,
+      "title": "JavaScript: Introduktion",
+      "description": "En grundkurs i JavaScript",
+      "length": 40,
+      "category": "Programmering",
+      "type": "klassrumskurs",
+      "price": "4999"
+    },
+    {
+      "id": 2,
+      "title": "JavaScript fördjupningkurs 1",
+      "description": "Fördjupningskurs i JavaScript",
+      "length": 40,
+      "category": "Programmering",
+      "type": "klassrumskurs",
+      "price": "5999"
+    },
+    {
+      "id": 3,
+      "title": "JavaScript fördjupningkurs 2",
+      "description": "Fördjupningskurs i JavaScript",
+      "length": 40,
+      "category": "Programmering",
+      "type": "klassrumskurs",
+      "price": "5999"
+    },
+    {
+      "id": 4,
+      "title": "JavaScript fördjupningkurs 3",
+      "description": "Fördjupningskurs i JavaScript",
+      "length": 40,
+      "category": "Programmering",
+      "type": "klassrumskurs",
+      "price": "4999"
+    },
+    {
+      "id": 5,
+      "title": "CSS: Introduktion",
+      "description": "Introduktion i CSS",
+      "length": 40,
+      "category": "Programmering",
+      "type": "klassrumskurs",
+      "price": "4799"
+    },
+    {
+      "id": 6,
+      "title": "CSS fördjupningkurs 1",
+      "description": "Fördjupningskurs i CSS",
+      "length": 40,
+      "category": "Programmering",
+      "type": "klassrumskurs",
+      "price": "4999"
+    },
+    {
+      "id": 7,
+      "title": "CSS fördjupningkurs 2",
+      "description": "Fördjupningskurs i CSS",
+      "length": 40,
+      "category": "Programmering",
+      "type": "klassrumskurs",
+      "price": "4999"
+    },
+    {
+      "id": 8,
+      "title": "CSS fördjupningkurs 3",
+      "description": "Fördjupningskurs i CSS",
+      "length": 40,
+      "category": "Programmering",
+      "type": "klassrumskurs",
+      "price": "4999"
+    },
+    {
+      "id": 9,
+      "title": "HTML: Introduktion",
+      "description": "Introduktion i HTML",
+      "length": 40,
+      "category": "Programmering",
+      "type": "klassrumskurs",
+      "price": "2999"
+    },
+    {
+      "id": 10,
+      "title": "HTML fördjupningkurs 1",
+      "description": "Fördjupningskurs i HTML",
+      "length": 40,
+      "category": "Programmering",
+      "type": "klassrumskurs",
+      "price": "3999"
+    },
+    {
+      "id": 11,
+      "title": "HTML fördjupningkurs 2",
+      "description": "Fördjupningskurs i HTML",
+      "length": 40,
+      "category": "Programmering",
+      "type": "klassrumskurs",
+      "price": "4999"
+    },
+    {
+      "id": 12,
+      "title": "HTML fördjupningkurs 3",
+      "description": "Fördjupningskurs i HTML",
+      "length": 40,
+      "category": "Programmering",
+      "type": "klassrumskurs",
+      "price": "4999"
+    },
+    {
+      "id": 13,
+      "title": "C#: Introduktion",
+      "description": "Introduktion i C#",
+      "length": 40,
+      "category": "Programmering",
+      "type": "klassrumskurs",
+      "price": "6999"
+    },
+    {
+      "id": 14,
+      "title": "C# fördjupningkurs 1",
+      "description": "Fördjupningskurs i C#",
+      "length": 40,
+      "category": "Programmering",
+      "type": "klassrumskurs",
+      "price": "5599"
+    },
+    {
+      "id": 15,
+      "title": "C# fördjupningkurs 2",
+      "description": "Fördjupningskurs i C#",
+      "length": 40,
+      "category": "Programmering",
+      "type": "klassrumskurs",
+      "price": "4999"
+    },
+    {
+      "id": 16,
+      "title": "C# fördjupningkurs 3",
+      "description": "Fördjupningskurs i C#",
+      "length": 40,
+      "category": "Programmering",
+      "type": "klassrumskurs",
+      "price": "4999"
+    },
+    {
+      "id": 17,
+      "title": "Databaser SQL Server: Introduktion",
+      "description": "Fördjupningskurs i Databaser SQL Server",
+      "length": 40,
+      "category": "Programmering",
+      "type": "klassrumskurs",
+      "price": "3999"
+    },
+    {
+      "id": 18,
+      "title": "Databaser SQL Server fördjupningkurs 1",
+      "description": "Fördjupningskurs i Databaser SQL Server",
+      "length": 40,
+      "category": "Programmering",
+      "type": "klassrumskurs",
+      "price": "3999"
+    },
+    {
+      "id": 19,
+      "title": "Databaser SQL Server fördjupningkurs 2",
+      "description": "Fördjupningskurs i Databaser SQL Server",
+      "length": 40,
+      "category": "Programmering",
+      "type": "klassrumskurs",
+      "price": "4999"
+    },
+    {
+      "id": 20,
+      "title": "Databaser SQL Server fördjupningkurs 3",
+      "description": "Fördjupningskurs i Databaser SQL Server",
+      "length": 40,
+      "category": "Programmering",
+      "type": "klassrumskurs",
+      "price": "4999"
+    },
+    {
+      "id": 21,
+      "title": "Agil Utveckling: Introduktion",
+      "description": "Introduktion i Agil Utveckling",
+      "length": 40,
+      "category": "Programmering",
+      "type": "klassrumskurs",
+      "price": "7999"
+    },
+    {
+      "id": 22,
+      "title": "Agil Utveckling fördjupningkurs 1",
+      "description": "Fördjupningskurs i Agil Utveckling",
+      "length": 40,
+      "category": "Programmering",
+      "type": "klassrumskurs",
+      "price": "7999"
+    },
+    {
+      "id": 23,
+      "title": "Agil Utveckling fördjupningkurs 2",
+      "description": "Fördjupningskurs i Agil Utveckling",
+      "length": 40,
+      "category": "Programmering",
+      "type": "klassrumskurs",
+      "price": "7999"
+    },
+    {
+      "id": 24,
+      "title": "Agil Utveckling fördjupningkurs 3",
+      "description": "Fördjupningskurs i Agil Utveckling",
+      "length": 40,
+      "category": "Programmering",
+      "type": "klassrumskurs",
+      "price": "7999"
+    },
+    {
+      "id": 25,
+      "title": "JavaScript: Introduktion",
+      "description": "Introduktion i JavaScript",
+      "length": 10,
+      "category": "Programmering",
+      "type": "ondemandkurs",
+      "price": "399"
+    },
+    {
+      "id": 26,
+      "title": "JavaScript fördjupningkurs 1",
+      "description": "Fördjupningskurs i JavaScript",
+      "length": 10,
+      "category": "Programmering",
+      "type": "ondemandkurs",
+      "price": "499"
+    },
+    {
+      "id": 27,
+      "title": "JavaScript fördjupningkurs 2",
+      "description": "Fördjupningskurs i JavaScript",
+      "length": 10,
+      "category": "Programmering",
+      "type": "ondemandkurs",
+      "price": "499"
+    },
+    {
+      "id": 28,
+      "title": "JavaScript fördjupningkurs 3",
+      "description": "Fördjupningskurs i JavaScript",
+      "length": 10,
+      "category": "Programmering",
+      "type": "ondemandkurs",
+      "price": "499"
+    },
+    {
+      "id": 29,
+      "title": "CSS: Introduktion",
+      "description": "Introduktion i CSS",
+      "length": 10,
+      "category": "Programmering",
+      "type": "ondemandkurs",
+      "price": "299"
+    },
+    {
+      "id": 30,
+      "title": "CSS fördjupningkurs 1",
+      "description": "Fördjupningskurs i CSS",
+      "length": 10,
+      "category": "Programmering",
+      "type": "ondemandkurs",
+      "price": "299"
+    },
+    {
+      "id": 31,
+      "title": "CSS fördjupningkurs 2",
+      "description": "Fördjupningskurs i CSS",
+      "length": 10,
+      "category": "Programmering",
+      "type": "ondemandkurs",
+      "price": "299"
+    },
+    {
+      "id": 32,
+      "title": "CSS fördjupningkurs 3",
+      "description": "Fördjupningskurs i CSS",
+      "length": 10,
+      "category": "Programmering",
+      "type": "ondemandkurs",
+      "price": "399"
+    },
+    {
+      "id": 33,
+      "title": "HTML: Introduktion",
+      "description": "Introduktion i HTML",
+      "length": 10,
+      "category": "Programmering",
+      "type": "ondemandkurs",
+      "price": "199"
+    },
+    {
+      "id": 34,
+      "title": "HTML fördjupningkurs 1",
+      "description": "Fördjupningskurs i HTML",
+      "length": 10,
+      "category": "Programmering",
+      "type": "ondemandkurs",
+      "price": "299"
+    },
+    {
+      "id": 35,
+      "title": "HTML fördjupningkurs 2",
+      "description": "Fördjupningskurs i HTML",
+      "length": 10,
+      "category": "Programmering",
+      "type": "ondemandkurs",
+      "price": "299"
+    },
+    {
+      "id": 36,
+      "title": "HTML fördjupningkurs 3",
+      "description": "Fördjupningskurs i HTML",
+      "length": 10,
+      "category": "Programmering",
+      "type": "ondemandkurs",
+      "price": "399"
+    },
+    {
+      "id": 37,
+      "title": "C#: Introduktion",
+      "description": "Introduktion i C#",
+      "length": 10,
+      "category": "Programmering",
+      "type": "ondemandkurs",
+      "price": "499"
+    },
+    {
+      "id": 38,
+      "title": "C# fördjupningkurs 1",
+      "description": "Fördjupningskurs i C#",
+      "length": 10,
+      "category": "Programmering",
+      "type": "ondemandkurs",
+      "price": "499"
+    },
+    {
+      "id": 39,
+      "title": "C# fördjupningkurs 2",
+      "description": "Fördjupningskurs i C#",
+      "length": 10,
+      "category": "Programmering",
+      "type": "ondemandkurs",
+      "price": "499"
+    },
+    {
+      "id": 40,
+      "title": "C# fördjupningkurs 3",
+      "description": "Fördjupningskurs i C#",
+      "length": 10,
+      "category": "Programmering",
+      "type": "ondemandkurs",
+      "price": "499"
+    },
+    {
+      "id": 41,
+      "title": "Databaser SQL Server: Introduktion",
+      "description": "Introduktion i Databaser SQL Server",
+      "length": 10,
+      "category": "Programmering",
+      "type": "ondemandkurs",
+      "price": "399"
+    },
+    {
+      "id": 42,
+      "title": "Databaser SQL Server fördjupningkurs 1",
+      "description": "Fördjupningskurs i Databaser SQL Server",
+      "length": 10,
+      "category": "Programmering",
+      "type": "ondemandkurs",
+      "price": "399"
+    },
+    {
+      "id": 43,
+      "title": "Databaser SQL Server fördjupningkurs 2",
+      "description": "Fördjupningskurs i Databaser SQL Server",
+      "length": 10,
+      "category": "Programmering",
+      "type": "ondemandkurs",
+      "price": "399"
+    },
+    {
+      "id": 44,
+      "title": "Databaser SQL Server fördjupningkurs 3",
+      "description": "Fördjupningskurs i Databaser SQL Server",
+      "length": 10,
+      "category": "Programmering",
+      "type": "ondemandkurs",
+      "price": "399"
+    },
+    {
+      "id": 45,
+      "title": "Agil Utveckling: Introduktion",
+      "description": "Introduktion i Agil Utveckling",
+      "length": 10,
+      "category": "Programmering",
+      "type": "ondemandkurs",
+      "price": "499"
+    },
+    {
+      "id": 46,
+      "title": "Agil Utveckling fördjupningkurs 1",
+      "description": "Fördjupningskurs i Agil Utveckling",
+      "length": 10,
+      "category": "Programmering",
+      "type": "ondemandkurs",
+      "price": "499"
+    },
+    {
+      "id": 47,
+      "title": "Agil Utveckling fördjupningkurs 2",
+      "description": "Fördjupningskurs i Agil Utveckling",
+      "length": 10,
+      "category": "Programmering",
+      "type": "ondemandkurs",
+      "price": "499"
+    },
+    {
+      "id": 48,
+      "title": "Agil Utveckling fördjupningkurs 3",
+      "description": "Fördjupningskurs i Agil Utveckling",
+      "length": 10,
+      "category": "Programmering",
+      "type": "ondemandkurs",
+      "price": "499"
+    },
+    {
+      "id": 49,
+      "title": "test",
+      "description": "test2",
+      "length": 55,
+      "category": "test3",
+      "type": "test4",
+      "price": "123"
+    }
+  ]
+}

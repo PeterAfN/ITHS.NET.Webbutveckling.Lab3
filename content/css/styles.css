@@ -1,0 +1,178 @@
+/****** resets ******/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/****** base styling ******/
+body {
+  font-family: "Roboto", sans-serif;
+  font-size: 1rem;
+  background: var(--light-color);
+  color: var(--light-color);
+  line-height: 1.6;
+  width: 100%;
+}
+
+a {
+  text-decoration: none;
+}
+
+h1,
+h2,
+h3 {
+  font-weight: 300;
+  line-height: 1.2;
+  color: var(--primary-color);
+}
+
+ul {
+  list-style: none;
+}
+
+p {
+  margin: 1rem 0;
+}
+
+img {
+  width: 100%;
+}
+
+footer {
+  padding: 1.5rem;
+  text-align: center;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/****** icons ******/
+.icons {
+  padding: 2rem;
+  border: 1px solid var(--dark-color);
+}
+
+.icons h3 {
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.icons i {
+  background-color: var(--primary-color);
+  color: var(--light-color);
+  padding: 0.8rem;
+  border-radius: 7%;
+  margin-bottom: 1rem;
+}
+
+/****** images ******/
+.small-images {
+  padding: 2rem;
+}
+
+.small-images li {
+  border: 1px solid #e2e2e2;
+  border-radius: 3px;
+}
+
+.small-images img {
+  background: url("../img/landing4000x6000.jpg") no-repeat center center/cover;
+}
+
+.small-images figure {
+  max-height: 220px;
+  overflow: hidden;
+  border-top-left-radius: 2px;
+  border-top-right-radius: 2px;
+  position: relative;
+}
+
+.small-images figcaption {
+  position: absolute;
+  bottom: 3%;
+  background-color: rgba(0, 0, 0, 0.7);
+  width: 100%;
+}
+
+.small-images h3 {
+  color: white;
+  padding: 0.75rem;
+  font-size: 1.25rem;
+  text-align: center;
+}
+
+.small-images p {
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  padding: 0rem 0.75rem;
+  margin-top: 0rem;
+  margin-bottom: 0rem;
+  color: var(--dark-color);
+  text-align: center;
+}
+
+.small-images a {
+  padding: 0.2rem;
+  color: var(--dark-color);
+  border: solid 1px var(--primary-color);
+  text-decoration: none;
+  border-radius: 2px;
+  z-index: 1;
+  margin: 0.6rem;
+}
+
+/****** footer ******/
+#main-footer {
+  background-color: var(--secondary-color);
+  color: var(--light-color);
+}
+
+#main-footer a {
+  color: var(--light-color);
+}
+
+#main-footer input[type="email"] {
+  width: 80%;
+  padding: 0.5rem;
+  margin-bottom: 0.5rem;
+  max-width: 14rem;
+  text-decoration: none;
+}
+
+#main-footer input[type="submit"] {
+  font-size: 1rem;
+  padding: 1rem;
+  background-color: var(--secondary-color);
+  color: var(--light-color);
+  border: solid 1px var(--primary-color);
+  text-decoration: none;
+  border-radius: 2px;
+  z-index: 1;
+  width: 26%;
+  font-weight: 500;
+  max-width: 8rem;
+  min-width: 8rem;
+}
+
+.register-btn {
+  padding: 1rem;
+  color: var(--light-color);
+  border: solid 1px var(--primary-color);
+  text-decoration: none;
+  border-radius: 2px;
+  z-index: 1;
+  min-width: 10rem;
+}
+
+.register-btn:hover {
+  opacity: 0.7;
+}
+
+#main-footer > p {
+  border-top: solid 1px var(--light-color);
+  padding-top: 1.4rem;
+  margin-top: 2rem;
+}
