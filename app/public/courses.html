@@ -59,7 +59,6 @@
       <div class="modal-add closed-add">
         <button id="close-button-add">&times;</button>
         <section id="add-container">
-
           <form>
             <p>Add a new course</p>
             <!-- <input id="id" type="text" class="form-control" placeholder="Id" /> -->
@@ -218,8 +217,77 @@
         </div>
         <div>
           <h3>Registrering</h3>
+          <!--#region - Register.js -->
+          <div class="modal-overlay-register close-overlay-register"></div>
+          <div class="modal-register closed-register">
+            <button id="close-button-register">&times;</button>
+            <section id="register-container">
+              <form>
+                <p>Please enter registration information</p>
+                <input
+                  id="first-name"
+                  type="text"
+                  class="form-control"
+                  placeholder="First name"
+                />
+                <input
+                  id="last-name"
+                  type="text"
+                  class="form-control"
+                  placeholder="Last Name"
+                />
+                <input
+                  id="email"
+                  type="text"
+                  class="form-control"
+                  placeholder="Email"
+                />
+                <input
+                  id="mobile"
+                  type="text"
+                  class="form-control"
+                  placeholder="Mobile number"
+                />
+                <input
+                  id="address"
+                  type="text"
+                  class="form-control"
+                  placeholder="Address"
+                />
+                <input
+                  id="city"
+                  type="text"
+                  class="form-control"
+                  placeholder="City"
+                />
+                <input
+                  id="state-province"
+                  type="text"
+                  class="form-control"
+                  placeholder="State (Province)"
+                />
+                <input
+                  id="postal-code"
+                  type="text"
+                  class="form-control"
+                  placeholder="Postal code"
+                />
+                <input
+                  id="country"
+                  type="text"
+                  class="form-control"
+                  placeholder="Country"
+                />
+                <div class="buttons">
+                  <button class="btn" id="save">Save</button>
+                  <button class="btn" id="cancel">Cancel</button>
+                </div>
+              </form>
+            </section>
+          </div>
+          <!--#endregion - Register.js -->
           <p>Registrera dig för att kunna köpa kurser.</p>
-          <a href="#" class="register-btn">Registrera</a>
+          <a id="register-button" class="register-btn">Registrera</a>
         </div>
       </div>
       <p>WestCoast Education &copy; 2021, All Rights Reserved</p>
@@ -229,6 +297,7 @@
     <script src="../../scripts/Buy.js"></script>
     <script src="../../scripts/Add.js"></script>
     <script src="../../scripts/Courses.js"></script>
+    <script src="../../scripts/Register.js"></script>
     <script src="/app.js"></script>
   </body>
 </html>

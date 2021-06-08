@@ -1,11 +1,12 @@
-/*#region - Add */
-.modal-add {
+/*#region - Add, Register */
+.modal-add,
+.modal-register {
   max-width: 400px;
   width: 90vw;
   position: fixed;
   z-index: 100;
   left: 50%;
-  top: 60%;
+  top: 50%;
   transform: translate(-50%, -50%);
   background: var(--light-color);
   box-shadow: 0 0 60px 10px rgba(0, 0, 0, 0.9);
@@ -15,23 +16,24 @@
   font-weight: 500;
 }
 
-#add-container form {
+#add-container,
+#register-container form {
   display: flex;
   flex-direction: column;
   gap: 10px;
   align-items: center;
-}
-
-#add-container p {
-  margin: 1.1rem 0rem 0.3rem;
-}
-
-#add-container {
   margin: 1rem 3rem 1rem;
 }
 
+#add-container p,
+#register-container p {
+  margin: 1.1rem 0rem 0.3rem;
+}
+
 #add-container #save,
-#add-container #cancel {
+#add-container #cancel,
+#register-container #save,
+#register-container #cancel {
   cursor: pointer;
   display: inline-block;
   color: var(--secondary-color);
@@ -42,7 +44,9 @@
 }
 
 #add-container #save:hover,
-#add-container #cancel:hover {
+#add-container #cancel:hover,
+#register-container #save:hover,
+#register-container #cancel:hover {
   border-color: var(--secondary-color);
   border: 1px solid;
 }
@@ -51,9 +55,9 @@ input[type="text"] {
   width: 100%;
   padding: 0.4rem;
 }
-/*#endregion - Add */
+/*#endregion - Add, Register */
 
-/*#region - Modal ( 'Shopping Cart' 'Buy Confirmation' 'Add Courses' ) */
+/*#region - Modal ( 'Shopping Cart' 'Buy Confirmation' 'Add Courses' 'Register' ) */
 .modal-shopping-cart {
   width: 90vw;
   max-width: 600px;
@@ -116,13 +120,16 @@ input[type="text"] {
 .closed-buy,
 .close-overlay-buy,
 .closed-add,
-.close-overlay-add {
+.close-overlay-add,
+.closed-register,
+.close-overlay-register {
   display: none;
 }
 
 .modal-overlay-shopping-cart,
 .modal-overlay-buy,
-.modal-overlay-add {
+.modal-overlay-add,
+.modal-overlay-register {
   position: fixed;
   top: 0;
   left: 0;
@@ -175,13 +182,15 @@ input[type="text"] {
 
 .modal-shopping-cart,
 .modal-buy,
-.modal-add {
+.modal-add,
+.modal-register {
   overflow: hidden;
 }
 
 .modal-shopping-cart #close-button,
 .modal-buy #close-button-buy,
-.modal-add #close-button-add {
+.modal-add #close-button-add,
+.modal-register #close-button-register {
   opacity: 1;
   position: absolute;
   z-index: 1;
@@ -199,7 +208,9 @@ input[type="text"] {
 .modal-buy #close-button-buy:hover,
 .modal-buy #close-button-buy:focus,
 .modal-add #close-button-add:hover,
-.modal-add #close-button-add:focus {
+.modal-add #close-button-add:focus,
+.modal-register #close-button-register:hover,
+.modal-register #close-button-register:hover {
   opacity: 0.7;
   text-decoration: none;
   cursor: pointer;
@@ -236,7 +247,7 @@ input[type="text"] {
   cursor: pointer;
 }
 
-/*#endregion - Modal ( 'Shopping Cart' 'Buy Confirmation' 'Add Courses' ) */
+/*#endregion - Modal ( 'Shopping Cart' 'Buy Confirmation' 'Add Courses' 'Register ) */
 
 /*#region - shopping cart bar */
 
@@ -413,7 +424,7 @@ input[type="text"] {
   }
 
   #add-container {
-    margin: 0rem 0rem 0.5rem;
+    /* margin: 0rem 0rem 0.5rem; */
   }
 
   #add-container #save,

@@ -10,10 +10,12 @@ let add = new Add("http://localhost:3000/kurser/");
 let courses = new Courses();
 let shoppingCart = new ShoppingCart();
 let shoppingCartBar = new ShoppingCartBar(0);
+let register = new Register("https://localhost:5001/api/deltagare/");
 
 const modalOverlayShoppingCart = document.querySelector(".modal-overlay-shopping-cart");
 const modalOverlayBuy = document.querySelector(".modal-overlay-buy");
 const modalOverlayAdd = document.querySelector(".modal-overlay-add");
+const modalOverlayRegister = document.querySelector(".modal-overlay-register");
 
 document.addEventListener("click", (e) => {
   CloseCorrectOverlay(e);
@@ -26,6 +28,8 @@ function CloseCorrectOverlay (event) {
     buy.toggle();
   } else if (event.target === modalOverlayAdd) {
     add.toggle();
+  } else if (event.target === modalOverlayRegister) {
+    register.toggle();
   }
 }
 
