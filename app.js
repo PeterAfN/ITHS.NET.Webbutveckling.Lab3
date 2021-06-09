@@ -2,8 +2,8 @@
 
 //#region - courses.html
 
-let data = [];
-let shoppingCartItems = [];
+let data = [];              //all courses on front page
+let shoppingCartItems = []; //all courses in shopping cart
 
 let buy = new Buy();
 let add = new Add("http://localhost:3000/kurser/");

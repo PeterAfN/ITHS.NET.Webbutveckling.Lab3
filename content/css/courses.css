@@ -288,6 +288,7 @@ input[type="text"] {
   background-color: var(--light-color);
   width: 100%;
   min-width: 678px;
+  white-space: nowrap;
 }
 
 .table-courses-container th {
@@ -305,6 +306,13 @@ input[type="text"] {
 .table-courses-container thead {
   color: #fff;
   background-color: var(--secondary-color);
+}
+
+.table-courses-container i:hover,
+.table-courses-container i:focus {
+  opacity: 0.7;
+  text-decoration: none;
+  cursor: pointer;
 }
 
 .table-courses-container {

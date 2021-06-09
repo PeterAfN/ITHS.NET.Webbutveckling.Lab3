@@ -25,6 +25,7 @@ class ShoppingCart {
         lastItem.addEventListener("click", () => {
             this.DeleteRowFromHTML(id);
             this.DeleteRowFromArray(id);
+            this.reAddShoppingIconAndEventListener(id);
         });
     }
 
@@ -52,10 +53,10 @@ class ShoppingCart {
         );
 
         if (existAlready !== -1) {
-            let searcString = `.modal-shopping-cart #row${index + 1}`;
-            let amount = document.querySelector(searcString);
-            let nr = amount.lastElementChild.previousElementSibling.textContent;
-            amount.lastElementChild.previousElementSibling.textContent = Number(nr) + 1;
+            //let searcString = `.modal-shopping-cart #row${index + 1}`;
+            //let amount = document.querySelector(searcString);
+            //let nr = amount.lastElementChild.previousElementSibling.textContent;
+            //amount.lastElementChild.previousElementSibling.textContent = Number(nr) + 1;
         } else {
             tableShoppingCart.insertAdjacentHTML(
                 "beforeend",
@@ -64,7 +65,6 @@ class ShoppingCart {
                         <td>${data[index].id}</td>
                         <td>${data[index].title}</td>
                         <td>${data[index].price}</td>
-                        <td>1</td>
                         <td><i class="far fa-trash-alt delete"></i></td>
                     </tr>
                 `
@@ -96,5 +96,24 @@ class ShoppingCart {
         const modal = document.querySelector(".modal-shopping-cart");
         modal.classList.toggle("closed-shopping-cart");
         modalOverlayShoppingCart.classList.toggle("closed-shopping-cart");
+    }
+
+    reAddShoppingIconAndEventListener(courseId) {
+        let xpath = `//td[text()='${courseId}']`;
+        let matchingElement = document.evaluate(xpath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
+
+        let shoppingCartIcon = matchingElement.parentNode.lastElementChild;
+        shoppingCartIcon.insertAdjacentHTML(
+            "beforeend",
+            `<i class="fas fa-cart-arrow-down fa-lg"></i>`
+        );
+
+        shoppingCartIcon.addEventListener("click", function addEL() {
+            shoppingCartIcon.removeEventListener("click", addEL);
+            shoppingCartIcon.textContent = '';
+            shoppingCartBar.updateCounter(true);
+            shoppingCart.addCourse(courseId);
+            shoppingCart.addEventListenerToDelete();
+        });
     }
 }

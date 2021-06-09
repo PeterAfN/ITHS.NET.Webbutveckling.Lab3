@@ -8,7 +8,7 @@ class Courses {
     getData() {
         fetch("http://localhost:3000/kurser")
             .then((response) => response.json())
-            .then((data) => this.createTable(data));
+            .then((c) => this.createTable(c));
     }
 
     createTable(courses) {
@@ -33,18 +33,22 @@ class Courses {
                 <td>${course.length}</td>
                 <td>${course.type}</td>
                 <td>${course.price}</td>
-                <td class="cart-btn-table add">Lägg i kundvagn</td>
+                <td class="cart-btn-table add" title="Klicka för att lägga i kundvagnen."><i class="fas fa-cart-arrow-down fa-lg"></i> </td>
                 </tr>
             `
         );
     }
 
     addEventListeners() {
-        const tableRows = document.querySelectorAll(".table-courses-container .add");
+        const addToCartButtons = document.querySelectorAll(".table-courses-container .add");
 
-        tableRows.forEach((item) => {
-            const courseId = item.parentNode.firstElementChild.firstChild.nodeValue;
-            item.addEventListener("click", () => {
+        addToCartButtons.forEach((shoppingCartIcon) => {
+            const courseId = shoppingCartIcon.parentNode.firstElementChild.firstChild.nodeValue;
+            shoppingCartIcon.addEventListener("click", function addEL() {
+                shoppingCartIcon.removeEventListener("click", addEL);
+
+                shoppingCartIcon.textContent = '';
+
                 shoppingCartBar.updateCounter(true);
                 shoppingCart.addCourse(courseId);
                 shoppingCart.addEventListenerToDelete();
