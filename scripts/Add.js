@@ -40,7 +40,7 @@ class Add {
         const typeInput = document.querySelector('#type');
         const priceInput = document.querySelector('#price');
 
-        const course = {
+        let course = {
             // id: Number(idInput.value),
             id: Number(Number(data[data.length - 1].id) + 1),
             title: titleInput.value,

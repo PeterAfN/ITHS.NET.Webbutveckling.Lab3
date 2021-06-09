@@ -53,7 +53,9 @@ class Register {
             country: country.value,
         };
 
-        const response = await fetch(`${this.baseUrl}`, {
+        let response = null;
+
+        response = await fetch(`${this.baseUrl}`, {
             method: "POST",
             mode: "cors",
             headers: {
@@ -61,9 +63,6 @@ class Register {
             },
             body: JSON.stringify(person),
         });
-
-        if (!response.ok) throw new Error(response.statusText);
-        return response.json();
     }
 
     toggle() {
