@@ -46,13 +46,31 @@ class Courses {
             const courseId = shoppingCartIcon.parentNode.firstElementChild.firstChild.nodeValue;
             shoppingCartIcon.addEventListener("click", function addEL() {
                 shoppingCartIcon.removeEventListener("click", addEL);
-
-                shoppingCartIcon.textContent = '';
-
+                shoppingCartIcon.textContent = ''; //removes <i class="fas fa-cart-arrow-down fa-lg"></i>           
+                shoppingCartIcon.insertAdjacentHTML("beforeend", `<i class="fas fa-check fa-lg"></i>`);
                 shoppingCartBar.updateCounter(true);
                 shoppingCart.addCourse(courseId);
                 shoppingCart.addEventListenerToDelete();
             });
+        });
+    }
+
+    reAddShoppingCartIcon(shoppingCartIcon) {
+        shoppingCartIcon.textContent = '';
+        shoppingCartIcon.insertAdjacentHTML(
+            "beforeend",
+            `<i class="fas fa-cart-arrow-down fa-lg"></i>`
+        );
+    }
+
+    reAddShoppingCartIconEventListener(courseId, shoppingCartIcon) {
+        shoppingCartIcon.addEventListener("click", function addEL() {
+            shoppingCartIcon.removeEventListener("click", addEL);
+            shoppingCartIcon.textContent = '';
+            shoppingCartIcon.insertAdjacentHTML("beforeend", `<i class="fas fa-check fa-lg"></i>`);
+            shoppingCartBar.updateCounter(true);
+            shoppingCart.addCourse(courseId);
+            shoppingCart.addEventListenerToDelete();
         });
     }
 }

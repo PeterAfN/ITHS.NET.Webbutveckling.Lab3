@@ -9,12 +9,17 @@ class ShoppingCart {
         const closeButton = document.querySelector("#close-button");
         const openPaymentButton = document.querySelector(".to-payment");
         openPaymentButton.addEventListener("click", () => {
+            saveBoughtCoursesToDatabase();
             this.toggle();
             buy.toggle();
         });
         closeButton.addEventListener("click", () => {
             shoppingCart.toggle();
         });
+    }
+
+    saveBoughtCoursesToDatabase() {
+
     }
 
     addEventListenerToDelete() {
@@ -25,7 +30,13 @@ class ShoppingCart {
         lastItem.addEventListener("click", () => {
             this.DeleteRowFromHTML(id);
             this.DeleteRowFromArray(id);
-            this.reAddShoppingIconAndEventListener(id);
+
+            let xpath = `//td[text()='${id}']`;
+            let matchingElement = document.evaluate(xpath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
+            let shoppingCartIcon = matchingElement.parentNode.lastElementChild;
+
+            courses.reAddShoppingCartIcon(shoppingCartIcon);
+            courses.reAddShoppingCartIconEventListener(id, shoppingCartIcon);
         });
     }
 
@@ -96,24 +107,5 @@ class ShoppingCart {
         const modal = document.querySelector(".modal-shopping-cart");
         modal.classList.toggle("closed-shopping-cart");
         modalOverlayShoppingCart.classList.toggle("closed-shopping-cart");
-    }
-
-    reAddShoppingIconAndEventListener(courseId) {
-        let xpath = `//td[text()='${courseId}']`;
-        let matchingElement = document.evaluate(xpath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
-
-        let shoppingCartIcon = matchingElement.parentNode.lastElementChild;
-        shoppingCartIcon.insertAdjacentHTML(
-            "beforeend",
-            `<i class="fas fa-cart-arrow-down fa-lg"></i>`
-        );
-
-        shoppingCartIcon.addEventListener("click", function addEL() {
-            shoppingCartIcon.removeEventListener("click", addEL);
-            shoppingCartIcon.textContent = '';
-            shoppingCartBar.updateCounter(true);
-            shoppingCart.addCourse(courseId);
-            shoppingCart.addEventListenerToDelete();
-        });
     }
 }
