@@ -16,9 +16,14 @@ class Register {
         });
         saveButton.addEventListener("click", (e) => {
             e.preventDefault();
-            this.save()
-                .then()
-                .catch((err) => console.log(err));
+            if (!this.isUserRegistered()) {
+                this.save()
+                    .then()
+                    .catch((err) => {
+                        console.log(err);
+                        return;
+                    });
+            }
             this.toggle();
         });
         cancelButton.addEventListener("click", (e) => {
@@ -30,10 +35,16 @@ class Register {
         });
     }
 
+    isUserRegistered() {
+        var isRegistered = localStorage.getItem("WestcoastEducation_IsUserRegistered");
+        if (isRegistered) return true;
+        else false;
+    }
+
     async save() {
         const firstName = document.querySelector('#first-name');
         const lastName = document.querySelector('#last-name');
-        const email = document.querySelector('#email');
+        const mail = document.querySelector('#email');
         const mobile = document.querySelector('#mobile');
         const address = document.querySelector('#address');
         const city = document.querySelector('#city');
@@ -42,11 +53,11 @@ class Register {
         const country = document.querySelector('#country');
 
         const person = {
-            förnamn: firstName.value,
-            efternamn: lastName.value,
-            epost: email.value,
-            mobilnummer: mobile.value,
-            adress: address.value,
+            firstName: firstName.value,
+            lastName: lastName.value,
+            mail: mail.value,
+            mobile: mobile.value,
+            address: address.value,
             city: city.value,
             stateProvince: stateProvince.value,
             postalCode: Number(postalCode.value),

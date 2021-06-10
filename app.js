@@ -10,7 +10,7 @@ let add = new Add("http://localhost:3000/kurser/");
 let courses = new Courses();
 let shoppingCart = new ShoppingCart();
 let shoppingCartBar = new ShoppingCartBar(0);
-let register = new Register("https://localhost:5001/api/deltagare/");
+let register = new Register("https://localhost:5001/api/student/");
 
 const modalOverlayShoppingCart = document.querySelector(".modal-overlay-shopping-cart");
 const modalOverlayBuy = document.querySelector(".modal-overlay-buy");

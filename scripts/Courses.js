@@ -6,9 +6,12 @@ class Courses {
     }
 
     getData() {
-        fetch("http://localhost:3000/kurser")
+        // fetch("http://localhost:3000/kurser")
+        //     .then((response) => response.json())
+        //     .then((c) => this.createTable(c));
+        fetch("https://localhost:5001/api/course/")
             .then((response) => response.json())
-            .then((c) => this.createTable(c));
+            .then((c) => this.createTable(c));       
     }
 
     createTable(courses) {
@@ -26,14 +29,13 @@ class Courses {
             "beforeend",
             `
                 <tr>
-                <td>${course.id}</td>
-                <td>${course.title}</td>
-                <td>${course.description}</td>
-                <td>${course.category}</td>
-                <td>${course.length}</td>
-                <td>${course.type}</td>
-                <td>${course.price}</td>
-                <td class="cart-btn-table add" title="Klicka för att lägga i kundvagnen."><i class="fas fa-cart-arrow-down fa-lg"></i> </td>
+                    <td>${course.id}</td>
+                    <td>${course.titel}</td>
+                    <td>${course.description}</td>
+                    <td>${course.length}</td>
+                    <td>${course.difficulty}</td>
+                    <td>${course.price}</td>
+                    <td class="cart-btn-table add" title="Klicka för att lägga i kundvagnen."><i class="fas fa-cart-arrow-down fa-lg"></i> </td>
                 </tr>
             `
         );
