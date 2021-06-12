@@ -8,7 +8,7 @@ let shoppingCartItems = []; //all courses in shopping cart
 let buy = new Buy();
 let add = new Add("http://localhost:3000/kurser/");
 let courses = new Courses();
-let shoppingCart = new ShoppingCart();
+let shoppingCart = new ShoppingCart("https://localhost:5001/api/courseStudent");
 let shoppingCartBar = new ShoppingCartBar(0);
 let register = new Register("https://localhost:5001/api/student/");
 

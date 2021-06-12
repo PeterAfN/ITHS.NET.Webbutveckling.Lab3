@@ -1,3 +1,4 @@
+
 class Register {
 
     constructor(baseUrl) {
@@ -12,19 +13,19 @@ class Register {
         const closeButtonRegister = document.querySelector("#close-button-register");
 
         registerButton.addEventListener("click", () => {
-            this.toggle();
+            if (this.isUserRegistered() === "false") {
+                this.toggle();
+            }
+
         });
         saveButton.addEventListener("click", (e) => {
             e.preventDefault();
-            if (!this.isUserRegistered()) {
-                this.save()
-                    .then()
-                    .catch((err) => {
-                        console.log(err);
-                        return;
-                    });
-            }
-            this.toggle();
+            this.save()
+                .then()
+                .catch((err) => {
+                    console.log(err);
+                    return;
+                })
         });
         cancelButton.addEventListener("click", (e) => {
             e.preventDefault();
@@ -36,9 +37,7 @@ class Register {
     }
 
     isUserRegistered() {
-        var isRegistered = localStorage.getItem("WestcoastEducation_IsUserRegistered");
-        if (isRegistered) return true;
-        else false;
+        return localStorage.getItem("WestcoastEducation_IsUserRegistered");
     }
 
     async save() {
@@ -74,6 +73,12 @@ class Register {
             },
             body: JSON.stringify(person),
         });
+        if (response.status !== 201) throw new Error(response.statusText);
+        else {
+            localStorage.setItem("WestcoastEducation_IsUserRegistered", true);
+            localStorage.setItem("WestcoastEducation_RegisteredEmail", person.mail);
+            this.toggle();
+        }
     }
 
     toggle() {
