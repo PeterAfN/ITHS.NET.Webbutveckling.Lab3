@@ -11,7 +11,7 @@ class ShoppingCart {
         const closeButton = document.querySelector("#close-button");
         const openPaymentButton = document.querySelector(".to-payment");
         openPaymentButton.addEventListener("click", () => {
-            this.saveBoughtCoursesToDatabase();
+            this.saveCoursesToDatabase();
             this.toggle();
             buy.toggle();
         });
@@ -20,54 +20,44 @@ class ShoppingCart {
         });
     }
 
-    saveBoughtCoursesToDatabase() {
+    saveCoursesToDatabase() {
+        var _this = this;
         let email = localStorage.getItem("WestcoastEducation_RegisteredEmail");
         let url = `https://localhost:5001/api/student/find/${email}`;
         fetch(url).then(function (response) {
             response.json().then(function (student) {
 
-                
-                shoppingCartItems.forEach((shoppingCartItem) =>  {
+                // for ( let shoppingCartItem of shoppingCartItems)
+                //shoppingCartItems.forEach(shoppingCartItem =>
+                for (let i = 0; i < shoppingCartItems.length; i++) {
                     if (student.id !== null) {
                         let studentCourse = {
-                            courseId: Number(shoppingCartItem.id),
+                            courseId: Number(shoppingCartItems[i].id),
                             studentId: Number(student.id),
                         };
                         url = `https://localhost:5001/api/courseStudent/`;
-                        let response = fetch(url, {
-                            method: "POST",
-                            mode: "cors",
-                            headers: {
-                                "Content-Type": "application/json",
-                            },
-                            body: JSON.stringify(studentCourse),
-                        });
-                        console.log(response.statusText);
-                        if (response.status !== 201) console.log(response.statusText);
-                        // else { shoppingCartItems = [] };
+                        try {
+                            let response = fetch(url, {
+                                method: "POST",
+                                mode: "cors",
+                                headers: {
+                                    "Content-Type": "application/json",
+                                },
+                                body: JSON.stringify(studentCourse),
+                            });
+                        } catch (error) {
+                            // console.log(i + response.statusText);
+                            if (response.status !== 201 || response.status !== 400) console.log(response.statusText);
+                        }
                     }
-                });
-                shoppingCartItems = [];
+                    console.log(i);
+                    _this.DeleteRowFromHTML(shoppingCartItems[i].id);
+                    _this.DeleteRowFromArray(shoppingCartItems[i].id);
+                };
+
             });
         });
     }
-
-    // getUserIdFromDatabase(student) {
-    //     // let email = localStorage.getItem("WestcoastEducation_RegisteredEmail");
-    //     // let url = `https://localhost:5001/api/student/find/${email}`;
-    //     // fetch(url).then(function (response) {
-    //     //     response.json().then(function (text) {
-    //     //         console.log(text.id);
-    //     //         return text.id;
-    //     //     });
-    //     // });
-    // }
-
-    // async funcName(url) {
-    //     const response = await fetch(url);
-    //     var data = await response.json();
-    //     return data.id
-    // }
 
     addEventListenerToDelete() {
         const item = document.querySelectorAll(".modal-shopping-cart .delete");
