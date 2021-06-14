@@ -29,32 +29,36 @@ class ShoppingCart {
 
                 // for ( let shoppingCartItem of shoppingCartItems)
                 //shoppingCartItems.forEach(shoppingCartItem =>
-                for (let i = 0; i < shoppingCartItems.length; i++) {
+                let _shoppingCartItems = shoppingCartItems;
+
+                for (let i = 0; i < _shoppingCartItems.length; i++) {
                     if (student.id !== null) {
                         let studentCourse = {
-                            courseId: Number(shoppingCartItems[i].id),
+                            courseId: Number(_shoppingCartItems[i].id),
                             studentId: Number(student.id),
                         };
                         url = `https://localhost:5001/api/courseStudent/`;
-                        try {
-                            let response = fetch(url, {
-                                method: "POST",
-                                mode: "cors",
-                                headers: {
-                                    "Content-Type": "application/json",
-                                },
-                                body: JSON.stringify(studentCourse),
-                            });
-                        } catch (error) {
-                            // console.log(i + response.statusText);
-                            if (response.status !== 201 || response.status !== 400) console.log(response.statusText);
-                        }
-                    }
-                    console.log(i);
-                    _this.DeleteRowFromHTML(shoppingCartItems[i].id);
-                    _this.DeleteRowFromArray(shoppingCartItems[i].id);
-                };
 
+                        let response = fetch(url, {
+                            method: "POST",
+                            mode: "cors",
+                            headers: {
+                                "Content-Type": "application/json",
+                            },
+                            body: JSON.stringify(studentCourse),
+                        }).then(function (text) {
+                            console.log('Request successful', text);
+                            console.log(i);
+                            console.log(_shoppingCartItems);
+                            // _this.DeleteRowFromHTML(_shoppingCartItems[i].id + 1);
+                            // _this.DeleteRowFromArray(_shoppingCartItems[i].id + 1);
+                        }).catch(function (error) {
+                            console.log('Request failed', error);
+                        });;
+                    }
+
+                };
+                _this.deleteAllRowsFromHTML();
             });
         });
     }
@@ -66,7 +70,7 @@ class ShoppingCart {
             lastItem.parentNode.parentNode.firstElementChild.firstChild.nodeValue;
         lastItem.addEventListener("click", () => {
             this.DeleteRowFromHTML(id);
-            this.DeleteRowFromArray(id);
+            // this.DeleteRowFromArray(id);
 
             let xpath = `//td[text()='${id}']`;
             let matchingElement = document.evaluate(xpath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
@@ -77,10 +81,19 @@ class ShoppingCart {
         });
     }
 
+    deleteAllRowsFromHTML() {
+        let searcString = `#shopping-cart-content`;
+        const selectedTable = document.querySelector(searcString);
+        while (selectedTable.hasChildNodes()) {
+            selectedTable.removeChild(selectedTable.firstChild);
+        }      
+    }
+
     DeleteRowFromHTML(id) {
         let searcString = `.modal-shopping-cart #row${id}`;
         const selectedRow = document.querySelector(searcString);
         if (selectedRow !== null) selectedRow.remove();
+        // this.DeleteRowFromArray(id);
     }
 
     DeleteRowFromArray(id) {

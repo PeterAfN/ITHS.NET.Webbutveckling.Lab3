@@ -13,15 +13,40 @@ class Courses {
         //     .then((c) => this.createTable(c));
         fetch("https://localhost:5001/api/course/")
             .then((response) => response.json())
-            .then((c) => this.createTable(c));       
+            .then((c) => this.createTable(c));
     }
 
     createTable(courses) {
-        data = courses;
-        for (let course of data) {
-            this.addRow(course);
-        }
-        this.addEventListeners();
+        data = courses; //save all courses page to array so
+        var _this = this;
+        //1. Get id with email.
+        let email = localStorage.getItem("WestcoastEducation_RegisteredEmail");
+        let url = `https://localhost:5001/api/student/find/${email}`;
+        fetch(url).then(function (response) {
+            response.json().then(function (student) {
+                //2. Get courses already bought.
+                fetch(`https://localhost:5001/api/courseStudent/${student.id}`).then(function (response2) {
+                    response2.json().then(function (coursesUser) {
+                        let match = false;
+                        for (let course of courses) {
+                            match = false;
+                            for (const courseUser of coursesUser) {
+                                if (courseUser.courseId === course.id) {
+                                    match = true;
+                                    break;
+                                }
+                            }
+                            //3. List only not bought courses.
+                            if (match === false) {
+                                _this.addRow(course);
+                                match = false;
+                            }
+                        }
+                        if (match === false) _this.addEventListeners();
+                    });
+                });
+            });
+        });
     }
 
     addRow(course) {
@@ -76,5 +101,14 @@ class Courses {
             shoppingCart.addCourse(courseId);
             shoppingCart.addEventListenerToDelete();
         });
+    }
+
+    clearAll() {
+        data = [];
+        let table = `.table-courses-container #table-courses-content`;
+        const selectedTable = document.querySelector(table);
+        while (selectedTable.hasChildNodes()) {
+            selectedTable.removeChild(selectedTable.firstChild);
+        }
     }
 }

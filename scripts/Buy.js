@@ -11,10 +11,14 @@ class Buy {
         const closeButtonBuy = document.querySelector("#close-button-buy");
 
         okbutton.addEventListener("click", () => {
+            courses.clearAll();
+            courses.getData();
             this.close();
         });
 
         closeButtonBuy.addEventListener("click", () => {
+            courses.clearAll();
+            courses.getData();
             this.toggle();
         });
     }
