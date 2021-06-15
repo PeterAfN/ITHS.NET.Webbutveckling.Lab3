@@ -25,4 +25,11 @@ class ShoppingCartBar {
       `
     );
   }
+
+  counterReset() {
+    this.counter = 0;
+    const shoppingCartItemsCtr = document.querySelector(".items-cart-ctr");
+    shoppingCartItemsCtr.innerHTML = "";
+    shoppingCartItemsCtr.insertAdjacentHTML("beforeend", `${0}`);
+  }
 }

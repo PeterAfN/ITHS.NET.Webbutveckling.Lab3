@@ -26,11 +26,8 @@ class ShoppingCart {
         let url = `https://localhost:5001/api/student/find/${email}`;
         fetch(url).then(function (response) {
             response.json().then(function (student) {
-
-                // for ( let shoppingCartItem of shoppingCartItems)
-                //shoppingCartItems.forEach(shoppingCartItem =>
                 let _shoppingCartItems = shoppingCartItems;
-
+                console.log(_shoppingCartItems);
                 for (let i = 0; i < _shoppingCartItems.length; i++) {
                     if (student.id !== null) {
                         let studentCourse = {
@@ -39,7 +36,7 @@ class ShoppingCart {
                         };
                         url = `https://localhost:5001/api/courseStudent/`;
 
-                        let response = fetch(url, {
+                        fetch(url, {
                             method: "POST",
                             mode: "cors",
                             headers: {
@@ -47,18 +44,17 @@ class ShoppingCart {
                             },
                             body: JSON.stringify(studentCourse),
                         }).then(function (text) {
-                            console.log('Request successful', text);
-                            console.log(i);
-                            console.log(_shoppingCartItems);
-                            // _this.DeleteRowFromHTML(_shoppingCartItems[i].id + 1);
-                            // _this.DeleteRowFromArray(_shoppingCartItems[i].id + 1);
+                            courses.DeleteRowFromHTML(_shoppingCartItems[i].id);
+                            courses.DeleteRowFromArray(_shoppingCartItems[i].id);
+                            shoppingCart.updateTotalPrice(false, _shoppingCartItems[i].id - 1, true);
                         }).catch(function (error) {
                             console.log('Request failed', error);
                         });;
                     }
-
                 };
                 _this.deleteAllRowsFromHTML();
+                _this.clearArray();
+                shoppingCartBar.counterReset();
             });
         });
     }
@@ -70,12 +66,10 @@ class ShoppingCart {
             lastItem.parentNode.parentNode.firstElementChild.firstChild.nodeValue;
         lastItem.addEventListener("click", () => {
             this.DeleteRowFromHTML(id);
-            // this.DeleteRowFromArray(id);
-
+            this.DeleteRowFromArray(id);
             let xpath = `//td[text()='${id}']`;
             let matchingElement = document.evaluate(xpath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
             let shoppingCartIcon = matchingElement.parentNode.lastElementChild;
-
             courses.reAddShoppingCartIcon(shoppingCartIcon);
             courses.reAddShoppingCartIconEventListener(id, shoppingCartIcon);
         });
@@ -86,14 +80,17 @@ class ShoppingCart {
         const selectedTable = document.querySelector(searcString);
         while (selectedTable.hasChildNodes()) {
             selectedTable.removeChild(selectedTable.firstChild);
-        }      
+        }
+    }
+
+    clearArray() {
+        shoppingCartItems = [];
     }
 
     DeleteRowFromHTML(id) {
         let searcString = `.modal-shopping-cart #row${id}`;
         const selectedRow = document.querySelector(searcString);
         if (selectedRow !== null) selectedRow.remove();
-        // this.DeleteRowFromArray(id);
     }
 
     DeleteRowFromArray(id) {
@@ -114,10 +111,6 @@ class ShoppingCart {
         );
 
         if (existAlready !== -1) {
-            //let searcString = `.modal-shopping-cart #row${index + 1}`;
-            //let amount = document.querySelector(searcString);
-            //let nr = amount.lastElementChild.previousElementSibling.textContent;
-            //amount.lastElementChild.previousElementSibling.textContent = Number(nr) + 1;
         } else {
             tableShoppingCart.insertAdjacentHTML(
                 "beforeend",
@@ -136,20 +129,25 @@ class ShoppingCart {
         shoppingCart.updateTotalPrice(true, index);
     }
 
-    updateTotalPrice(add, courseId) {
+    updateTotalPrice(add, courseId, reset = false) {
+        console.log("courseId=" + courseId);
         let searcString = ".modal-shopping-cart .price-total";
         const element = document.querySelector(searcString);
-        let priceTotalCurrent = element.textContent;
+        if (reset === true) {
+            element.textContent = 0;
+        }
+        else {
+            let priceTotalCurrent = element.textContent;
+            let indexNewItem = shoppingCartItems.findIndex(
+                (item) => item.id === courseId + 1
+            );
+            let priceNewItem = shoppingCartItems[indexNewItem].price;
 
-        let indexNewItem = shoppingCartItems.findIndex(
-            (item) => item.id === courseId + 1
-        );
-        let priceNewItem = shoppingCartItems[indexNewItem].price;
-
-        if (add === true) {
-            element.textContent = Number(priceTotalCurrent) + Number(priceNewItem);
-        } else {
-            element.textContent = Number(priceTotalCurrent) - Number(priceNewItem);
+            if (add === true) {
+                element.textContent = Number(priceTotalCurrent) + Number(priceNewItem);
+            } else {
+                element.textContent = Number(priceTotalCurrent) - Number(priceNewItem);
+            }
         }
     }
 

@@ -16,8 +16,8 @@ class Courses {
             .then((c) => this.createTable(c));
     }
 
-    createTable(courses) {
-        data = courses; //save all courses page to array so
+    createTable(coursesAvailable) {
+        data = coursesAvailable;
         var _this = this;
         //1. Get id with email.
         let email = localStorage.getItem("WestcoastEducation_RegisteredEmail");
@@ -27,22 +27,22 @@ class Courses {
                 //2. Get courses already bought.
                 fetch(`https://localhost:5001/api/courseStudent/${student.id}`).then(function (response2) {
                     response2.json().then(function (coursesUser) {
-                        let match = false;
-                        for (let course of courses) {
-                            match = false;
+                        let bought = false;
+                        for (let courseAvailable of coursesAvailable) {
+                            bought = false;
                             for (const courseUser of coursesUser) {
-                                if (courseUser.courseId === course.id) {
-                                    match = true;
+                                if (courseUser.courseId === courseAvailable.id) {
+                                    bought = true;
                                     break;
                                 }
                             }
-                            //3. List only not bought courses.
-                            if (match === false) {
-                                _this.addRow(course);
-                                match = false;
+                            //3. List only courses not bought.
+                            if (bought === false) {
+                                _this.addRow(courseAvailable);
+                                _this.addEventListeners();
+                                bought = false;
                             }
                         }
-                        if (match === false) _this.addEventListeners();
                     });
                 });
             });
@@ -55,7 +55,7 @@ class Courses {
         tableCoursesContent.insertAdjacentHTML(
             "beforeend",
             `
-                <tr>
+                <tr id="row${course.id}">
                     <td>${course.id}</td>
                     <td>${course.titel}</td>
                     <td>${course.description}</td>
@@ -70,17 +70,15 @@ class Courses {
 
     addEventListeners() {
         const addToCartButtons = document.querySelectorAll(".table-courses-container .add");
-
-        addToCartButtons.forEach((shoppingCartIcon) => {
-            const courseId = shoppingCartIcon.parentNode.firstElementChild.firstChild.nodeValue;
-            shoppingCartIcon.addEventListener("click", function addEL() {
-                shoppingCartIcon.removeEventListener("click", addEL);
-                shoppingCartIcon.textContent = ''; //removes <i class="fas fa-cart-arrow-down fa-lg"></i>           
-                shoppingCartIcon.insertAdjacentHTML("beforeend", `<i class="fas fa-check fa-lg"></i>`);
-                shoppingCartBar.updateCounter(true);
-                shoppingCart.addCourse(courseId);
-                shoppingCart.addEventListenerToDelete();
-            });
+        var lastCartButton = addToCartButtons[addToCartButtons.length - 1];
+        const courseId = lastCartButton.parentNode.firstElementChild.firstChild.nodeValue;
+        lastCartButton.addEventListener("click", function addEL() {
+            lastCartButton.removeEventListener("click", addEL);
+            lastCartButton.textContent = '';
+            lastCartButton.insertAdjacentHTML("beforeend", `<i class="fas fa-check fa-lg"></i>`);
+            shoppingCartBar.updateCounter(true);
+            shoppingCart.addCourse(courseId);
+            shoppingCart.addEventListenerToDelete();
         });
     }
 
@@ -103,12 +101,15 @@ class Courses {
         });
     }
 
-    clearAll() {
-        data = [];
-        let table = `.table-courses-container #table-courses-content`;
-        const selectedTable = document.querySelector(table);
-        while (selectedTable.hasChildNodes()) {
-            selectedTable.removeChild(selectedTable.firstChild);
-        }
+    DeleteRowFromHTML(id) {
+        let searcString = `#table-courses-content #row${id}`;
+        const selectedRow = document.querySelector(searcString);
+        if (selectedRow !== null) selectedRow.remove();
+    }
+
+    DeleteRowFromArray(id) {
+        // let item = data.findIndex((item) => item.id == id);
+        // data.splice(item, 1);
     }
 }
+
