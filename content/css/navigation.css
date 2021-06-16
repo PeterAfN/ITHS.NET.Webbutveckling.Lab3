@@ -44,3 +44,7 @@
 .navbar .text-primary {
   color: var(--primary-color);
 }
+
+.icon-my-page {
+  color: var(--primary-color);
+}

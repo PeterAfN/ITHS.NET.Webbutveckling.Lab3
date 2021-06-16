@@ -1,5 +1,7 @@
 "use strict";
 
+
+
 //Add.js is opened from the ShoppingCartBar.js navigation bar and adds new courses to the REST.API.
 class Add {
 
