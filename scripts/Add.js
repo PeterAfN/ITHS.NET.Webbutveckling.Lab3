@@ -19,9 +19,7 @@ class Add {
         });
         saveButton.addEventListener("click", (e) => {
             e.preventDefault();
-            this.save()
-                .then()
-                .catch((err) => console.log(err));
+            this.save();
             this.toggle();
         });
         cancelButton.addEventListener("click", (e) => {
@@ -37,32 +35,48 @@ class Add {
         const idInput = document.querySelector('#id');
         const titleInput = document.querySelector('#title');
         const descriptionInput = document.querySelector('#description');
-        const categoryInput = document.querySelector('#category');
         const lengthInput = document.querySelector('#length');
-        const typeInput = document.querySelector('#type');
+        const difficultyInput = document.querySelector('#difficulty');
         const priceInput = document.querySelector('#price');
+        const statusInput = document.querySelector('#status');
 
         let course = {
-            id: Number(Number(data[data.length - 1].id) + 1),
-            title: titleInput.value,
+            id: Number(idInput.value),
+            titel: titleInput.value,
             description: descriptionInput.value,
             length: Number(lengthInput.value),
-            category: categoryInput.value,
-            type: typeInput.value,
-            price: priceInput.value,
+            difficulty: difficultyInput.value,
+            status: statusInput.value,
+            price: Number(priceInput.value),
         };
 
-        const response = await fetch(`${this.baseUrl}`, {
+
+        await fetch(`${this.baseUrl}`, {
             method: "POST",
             mode: "cors",
             headers: {
                 "Content-Type": "application/json",
             },
             body: JSON.stringify(course),
-        });
+        })
+            .then(function (text) {
+                switch (text.status) {
+                    case 500:
+                        console.log("Kursen kunde inte sparas! Kontrollera så att kursnumret inte används redan! ", "felkod: " + text.status);
+                        break;
+                    case 201:
+                        console.log("Kursen sparades korrekt!");
+                        break;
+                    default:
+                        break;
+                }
+            })
+            .catch(function (error) {
+                console.log('Kursen kunde inte sparas! Har fälten rätt värden?', error);
+            });
 
-        if (!response.ok) throw new Error(response.statusText);
-        return response.json();
+        // if (!response.ok) throw new Error(response.statusText);
+        // return response.json();
     }
 
     toggle() {

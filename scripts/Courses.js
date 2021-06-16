@@ -24,7 +24,7 @@ class Courses {
         let url = `https://localhost:5001/api/student/find/${email}`;
         fetch(url).then(function (response) {
             response.json().then(function (student) {
-                //2. Get courses already bought.
+                //2. Get courses already bought with id from 1..
                 fetch(`https://localhost:5001/api/courseStudent/${student.id}`).then(function (response2) {
                     response2.json().then(function (coursesUser) {
                         let bought = false;
@@ -55,7 +55,7 @@ class Courses {
         tableCoursesContent.insertAdjacentHTML(
             "beforeend",
             `
-                <tr id="row${course.id}">
+                <tr id="courses-row${course.id}">
                     <td>${course.id}</td>
                     <td>${course.titel}</td>
                     <td>${course.description}</td>
@@ -102,7 +102,7 @@ class Courses {
     }
 
     DeleteRowFromHTML(id) {
-        let searcString = `#table-courses-content #row${id}`;
+        let searcString = `#table-courses-content #courses-row${id}`;
         const selectedRow = document.querySelector(searcString);
         if (selectedRow !== null) selectedRow.remove();
     }

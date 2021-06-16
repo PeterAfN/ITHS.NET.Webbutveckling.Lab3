@@ -66,9 +66,13 @@ class ShoppingCart {
         lastItem.addEventListener("click", () => {
             this.DeleteRowFromHTML(id);
             this.DeleteRowFromArray(id);
-            let xpath = `//td[text()='${id}']`;
-            let matchingElement = document.evaluate(xpath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
-            let shoppingCartIcon = matchingElement.parentNode.lastElementChild;
+            // let xpath = `//td[text()='${id}']`;
+            // let matchingElement = document.evaluate(xpath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
+            // let shoppingCartIcon = matchingElement.parentNode.lastElementChild;
+
+            let matchingElement = document.querySelector(`#courses-row${id}`)
+            let shoppingCartIcon = matchingElement.lastElementChild;
+
             courses.reAddShoppingCartIcon(shoppingCartIcon);
             courses.reAddShoppingCartIconEventListener(id, shoppingCartIcon);
         });
@@ -87,7 +91,7 @@ class ShoppingCart {
     }
 
     DeleteRowFromHTML(id) {
-        let searcString = `.modal-shopping-cart #row${id}`;
+        let searcString = `.modal-shopping-cart #cart-row${id}`;
         const selectedRow = document.querySelector(searcString);
         if (selectedRow !== null) selectedRow.remove();
     }
@@ -95,7 +99,7 @@ class ShoppingCart {
     DeleteRowFromArray(id) {
         let item = shoppingCartItems.findIndex((item) => item.id == id);
         while (item != -1) {
-            shoppingCart.updateTotalPrice(false, id - 1);
+            shoppingCart.updateTotalPrice(false, id);
             shoppingCartItems.splice(item, 1);
             item = shoppingCartItems.findIndex((item) => item.id == id);
             shoppingCartBar.updateCounter(false);
@@ -114,7 +118,7 @@ class ShoppingCart {
             tableShoppingCart.insertAdjacentHTML(
                 "beforeend",
                 `
-                    <tr id="row${index + 1}">
+                    <tr id="cart-row${courseId}">
                         <td>${allCourses[index].id}</td>
                         <td>${allCourses[index].titel}</td>
                         <td>${allCourses[index].price}</td>
@@ -125,7 +129,7 @@ class ShoppingCart {
         }
 
         shoppingCartItems.push(allCourses[index]);
-        shoppingCart.updateTotalPrice(true, index);
+        shoppingCart.updateTotalPrice(true, courseId);
     }
 
     updateTotalPrice(add, courseId, reset = false) {
@@ -139,7 +143,9 @@ class ShoppingCart {
             let indexNewItem = shoppingCartItems.findIndex(
                 (item) => item.id === courseId + 1
             );
-            let priceNewItem = shoppingCartItems[indexNewItem].price;
+
+            let priceNewItem = shoppingCartItems.find(x => x.id === Number(courseId)).price;
+            // let priceNewItem = shoppingCartItems[indexNewItem].price;
 
             if (add === true) {
                 element.textContent = Number(priceTotalCurrent) + Number(priceNewItem);
