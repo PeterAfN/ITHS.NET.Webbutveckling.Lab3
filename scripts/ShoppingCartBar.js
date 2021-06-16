@@ -1,3 +1,5 @@
+"use strict";
+
 //From this navigation bar ShoppingCartBar.js the ShoppingCart.js or Add.js are opened. 
 class ShoppingCartBar {
 

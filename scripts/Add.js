@@ -1,3 +1,5 @@
+"use strict";
+
 //Add.js is opened from the ShoppingCartBar.js navigation bar and adds new courses to the REST.API.
 class Add {
 
@@ -41,7 +43,6 @@ class Add {
         const priceInput = document.querySelector('#price');
 
         let course = {
-            // id: Number(idInput.value),
             id: Number(Number(data[data.length - 1].id) + 1),
             title: titleInput.value,
             description: descriptionInput.value,

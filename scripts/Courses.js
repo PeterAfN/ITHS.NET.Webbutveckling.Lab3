@@ -17,7 +17,7 @@ class Courses {
     }
 
     createTable(coursesAvailable) {
-        data = coursesAvailable;
+        allCourses = coursesAvailable;
         var _this = this;
         //1. Get id with email.
         let email = localStorage.getItem("WestcoastEducation_RegisteredEmail");
@@ -105,11 +105,6 @@ class Courses {
         let searcString = `#table-courses-content #row${id}`;
         const selectedRow = document.querySelector(searcString);
         if (selectedRow !== null) selectedRow.remove();
-    }
-
-    DeleteRowFromArray(id) {
-        // let item = data.findIndex((item) => item.id == id);
-        // data.splice(item, 1);
     }
 }
 

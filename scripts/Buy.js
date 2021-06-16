@@ -1,3 +1,5 @@
+"use strict";
+
 //Buy.js is opened from the ShoppingCart.js and is the final buy confirmation dialog after the buy was succesfull.
 class Buy {
 
@@ -11,20 +13,10 @@ class Buy {
         const closeButtonBuy = document.querySelector("#close-button-buy");
 
         okbutton.addEventListener("click", () => {
-            setTimeout(() => {  }, 2000);
-            // shoppingCartBar.counterReset();
-            // courses.clearAll();
-            // courses.getData();
-
             this.close();
         });
 
         closeButtonBuy.addEventListener("click", () => {
-            setTimeout(() => {  }, 2000);
-            // shoppingCartBar.counterReset();
-            // courses.clearAll();
-            // courses.getData();
-
             this.toggle();
         });
     }

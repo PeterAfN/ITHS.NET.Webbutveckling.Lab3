@@ -1,4 +1,5 @@
 "use strict";
+
 //ShoppingCart.js is opened from the ShoppingCartBar.js navigation bar.
 class ShoppingCart {
 
@@ -27,7 +28,6 @@ class ShoppingCart {
         fetch(url).then(function (response) {
             response.json().then(function (student) {
                 let _shoppingCartItems = shoppingCartItems;
-                console.log(_shoppingCartItems);
                 for (let i = 0; i < _shoppingCartItems.length; i++) {
                     if (student.id !== null) {
                         let studentCourse = {
@@ -45,7 +45,6 @@ class ShoppingCart {
                             body: JSON.stringify(studentCourse),
                         }).then(function (text) {
                             courses.DeleteRowFromHTML(_shoppingCartItems[i].id);
-                            courses.DeleteRowFromArray(_shoppingCartItems[i].id);
                             shoppingCart.updateTotalPrice(false, _shoppingCartItems[i].id - 1, true);
                         }).catch(function (error) {
                             console.log('Request failed', error);
@@ -105,7 +104,7 @@ class ShoppingCart {
 
     addCourse(courseId) {
         const tableShoppingCart = document.querySelector("#shopping-cart-content");
-        const index = data.findIndex((course) => course.id == courseId);
+        const index = allCourses.findIndex((course) => course.id == courseId);
         let existAlready = shoppingCartItems.findIndex(
             (course) => course.id == courseId
         );
@@ -116,21 +115,20 @@ class ShoppingCart {
                 "beforeend",
                 `
                     <tr id="row${index + 1}">
-                        <td>${data[index].id}</td>
-                        <td>${data[index].titel}</td>
-                        <td>${data[index].price}</td>
+                        <td>${allCourses[index].id}</td>
+                        <td>${allCourses[index].titel}</td>
+                        <td>${allCourses[index].price}</td>
                         <td><i class="far fa-trash-alt delete"></i></td>
                     </tr>
                 `
             );
         }
 
-        shoppingCartItems.push(data[index]);
+        shoppingCartItems.push(allCourses[index]);
         shoppingCart.updateTotalPrice(true, index);
     }
 
     updateTotalPrice(add, courseId, reset = false) {
-        console.log("courseId=" + courseId);
         let searcString = ".modal-shopping-cart .price-total";
         const element = document.querySelector(searcString);
         if (reset === true) {
