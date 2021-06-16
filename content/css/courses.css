@@ -253,8 +253,9 @@ input[type="text"] {
 
 #shopping-cart-bar {
   display: flex;
+  text-align: center;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-evenly;
   background-color: var(--primary-color);
   color: var(--light-color);
   position: fixed;

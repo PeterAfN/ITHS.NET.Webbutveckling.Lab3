@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../../content/css/navigation.css" />
+    <link rel="stylesheet" href="../../content/css/colors.css" />
+    <link rel="stylesheet" href="../../content/css/landing-page.css" />
+    <link rel="stylesheet" href="../../content/css/styles.css" />
+    <link rel="stylesheet" href="../../content/css/utilities.css" />
+    <link rel="stylesheet" href="../../content/css/personal.css" />
+    <!--#region - media queries -->
+    <link
+      rel="stylesheet"
+      media="screen and (max-width: 580px)"
+      href="../../content/css/mobile.css"
+    />
+    <link
+      rel="stylesheet"
+      media="screen and (max-width: 322px)"
+      href="../../content/css/mobileSmall.css"
+    />
+    <!--#endregion - media queries -->
+    <!--#region - icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"
+      integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w=="
+      crossorigin="anonymous"
+    />
+    <!--#endregion - icons -->
+    <!--#region - fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <!--#endregion - fonts -->
+    <title>WestCoast Education</title>
+  </head>
+  <body>
+    <header>
+      <!--#region - ShoppingCartBar.js -->
+      <nav class="navbar">
+        <ul>
+          <li><a href="../../index.html">Start</a></li>
+          <li><a href="./courses.html">Kurser</a></li>
+        </ul>
+        <h2 class="logo">
+          <span class="text-primary"
+            ><i class="fas fa-university"></i> WestCoast
+          </span>
+          Education<sup>&reg;</sup>
+        </h2>
+        <a href="/app/public/personal.html" class="active"><i class="fas fa-user-cog fa-1x icon-my-page" title="Min Sida - Personliga inställningar"></i></a>
+      </nav>
+
+      <section id="shopping-cart-bar">
+        <a id="add-button">
+          <i class="far fa-address-card"></i> Adressuppgifter
+        </a>
+        <a id="open-button">
+          <i class="fas fa-exchange-alt"></i> Köpta kurser
+        </a>
+      </section>
+      <!--#endregion - ShoppingCartBar.js -->
+    </header>
+    <main>
+      <!--#region - Courses.js -->
+      <section>
+        <section>
+          <div class="table-courses-container">
+            <table>
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Kurs</th>
+                  <th>Beskrivning</th>
+                  <th>Längd</th>
+                  <th>Nivå</th>
+                  <th>Pris</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody id="table-courses-content"></tbody>
+            </table>
+          </div>
+        </section>
+      </section>
+      <!--#endregion - Courses.js -->
+    </main>
+    <footer id="main-footer">
+      <div class="grid-items-autofit-same-size">
+        <div>
+        </div>
+        <div>
+
+        </div>
+        <div>
+
+        </div>
+      </div>
+      <p>WestCoast Education &copy; 2021, All Rights Reserved</p>
+    </footer>
+    <script src="../../scripts/Courses/ShoppingCartBar.js"></script>
+    <script src="../../scripts/Courses/ShoppingCart.js"></script>
+    <script src="../../scripts/Courses/Buy.js"></script>
+    <script src="../../scripts/Courses/Add.js"></script>
+    <script src="../../scripts/Courses/Courses.js"></script>
+    <script src="../../scripts/Courses/Register.js"></script>
+    <script src="/app.js"></script>
+  </body>
+</html>

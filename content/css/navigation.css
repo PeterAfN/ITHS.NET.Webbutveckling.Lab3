@@ -1,6 +1,7 @@
 /****** navigation ******/
 .navbar {
   display: flex;
+  text-align: center;
   align-items: center;
   justify-content: space-between;
   background-color: var(--secondary-color);
@@ -31,6 +32,9 @@
 
 .navbar ul {
   display: flex;
+  text-align: center;
+  align-items: center;
+  /* justify-content: left; */
 }
 
 .navbar .logo {
