@@ -10,6 +10,8 @@
     <link rel="stylesheet" href="../../content/css/styles.css" />
     <link rel="stylesheet" href="../../content/css/utilities.css" />
     <link rel="stylesheet" href="../../content/css/personal.css" />
+    <!-- <link rel="stylesheet" href="../../content/css/courses.css" /> -->
+
     <!--#region - media queries -->
     <link
       rel="stylesheet"
@@ -40,7 +42,6 @@
   </head>
   <body>
     <header>
-      <!--#region - ShoppingCartBar.js -->
       <nav class="navbar">
         <ul>
           <li><a href="../../index.html">Start</a></li>
@@ -52,53 +53,99 @@
           </span>
           Education<sup>&reg;</sup>
         </h2>
-        <a href="/app/public/personal.html" class="active"><i class="fas fa-user-cog fa-1x icon-my-page" title="Min Sida - Personliga inställningar"></i></a>
+        <a href="/app/public/personal.html" class="active"
+          ><i
+            class="fas fa-user-cog fa-1x icon-my-page"
+            title="Min Sida - Personliga inställningar"
+          ></i
+        ></a>
       </nav>
 
-      <section id="shopping-cart-bar">
-        <a id="add-button">
-          <i class="far fa-address-card"></i> Adressuppgifter
-        </a>
-        <a id="open-button">
-          <i class="fas fa-exchange-alt"></i> Köpta kurser
-        </a>
+      <section id="menu-bar">
+        <ul>
+          <li>
+            <a id="address-button" class="active">
+              <i class="far fa-address-card"></i> Adressuppgifter
+            </a>
+          </li>
+          <li>
+            <a id="courses-button">
+              <i class="fas fa-exchange-alt"></i> Köpta kurser
+            </a>
+          </li>
+        </ul>
       </section>
-      <!--#endregion - ShoppingCartBar.js -->
+
     </header>
     <main>
-      <!--#region - Courses.js -->
-      <section>
-        <section>
-          <div class="table-courses-container">
-            <table>
-              <thead>
-                <tr>
-                  <th>#</th>
-                  <th>Kurs</th>
-                  <th>Beskrivning</th>
-                  <th>Längd</th>
-                  <th>Nivå</th>
-                  <th>Pris</th>
-                  <th></th>
-                </tr>
-              </thead>
-              <tbody id="table-courses-content"></tbody>
-            </table>
+      <section id="adress-container">
+        <form>
+          <p>Adressuppgifter:</p>
+          <input
+            id="id"
+            type="text"
+            class="form-control"
+            placeholder="Förnamn"
+          />
+          <input
+            id="title"
+            type="text"
+            class="form-control"
+            placeholder="Efternamn"
+          />
+          <input
+            id="description"
+            type="text"
+            class="form-control"
+            placeholder="Gata"
+          />
+          <input
+            id="length"
+            type="text"
+            class="form-control"
+            placeholder="Stad"
+          />
+          <input
+            id="difficulty"
+            type="text"
+            class="form-control"
+            placeholder="Län"
+          />
+          <input
+            id="price"
+            type="text"
+            class="form-control"
+            placeholder="Postnummer"
+          />
+          <input
+            id="status"
+            type="text"
+            class="form-control"
+            placeholder="Land"
+          />
+          <input
+            id="title"
+            type="text"
+            class="form-control"
+            placeholder="Epost"
+          />
+          <input
+            id="title"
+            type="text"
+            class="form-control"
+            placeholder="Mobilnummer"
+          />
+          <div class="buttons">
+            <button class="btn" id="save" type="button">Spara</button>
           </div>
-        </section>
+        </form>
       </section>
-      <!--#endregion - Courses.js -->
     </main>
     <footer id="main-footer">
       <div class="grid-items-autofit-same-size">
-        <div>
-        </div>
-        <div>
-
-        </div>
-        <div>
-
-        </div>
+        <div></div>
+        <div></div>
+        <div></div>
       </div>
       <p>WestCoast Education &copy; 2021, All Rights Reserved</p>
     </footer>
@@ -108,6 +155,8 @@
     <script src="../../scripts/Courses/Add.js"></script>
     <script src="../../scripts/Courses/Courses.js"></script>
     <script src="../../scripts/Courses/Register.js"></script>
+    <script src="../../scripts/Personal/Address.js"></script>
+    <script src="../../scripts/Personal/Courses.js"></script>
     <script src="/app.js"></script>
   </body>
 </html>
