@@ -18,35 +18,52 @@ class Courses {
 
     createTable(coursesAvailable) {
         allCourses = coursesAvailable;
-        var _this = this;
-        //1. Get id with email.
-        let email = localStorage.getItem("WestcoastEducation_RegisteredEmail");
-        let url = `https://localhost:5001/api/student/find/${email}`;
-        fetch(url).then(function (response) {
-            response.json().then(function (student) {
-                //2. Get courses already bought with id from 1..
-                fetch(`https://localhost:5001/api/courseStudent/${student.id}`).then(function (response2) {
-                    response2.json().then(function (coursesUser) {
-                        let bought = false;
-                        for (let courseAvailable of coursesAvailable) {
-                            bought = false;
-                            for (const courseUser of coursesUser) {
-                                if (courseUser.courseId === courseAvailable.id) {
-                                    bought = true;
-                                    break;
-                                }
-                            }
-                            //3. List only courses not bought.
-                            if (bought === false) {
-                                _this.addRow(courseAvailable);
-                                _this.addEventListeners();
-                                bought = false;
-                            }
+        let _this = this;
+        let mail = localStorage.getItem("WestcoastEducation_RegisteredEmail");
+        _this.getStudent(mail).then(student => {
+            let id = Object.values(student)[0].id;
+            _this.getCourses(id).then(coursesUser => {
+                let courses = Object.values(coursesUser)[0];
+                let bought = false;
+                for (let courseAvailable of coursesAvailable) {
+                    bought = false;
+                    for (const courseUser of courses) {
+                        if (courseUser.courseId === courseAvailable.id) {
+                            bought = true;
+                            break;
                         }
-                    });
-                });
+                    }
+                    if (bought === false) {
+                        //List only courses not bought.
+                        _this.addRow(courseAvailable);
+                        _this.addEventListeners();
+                        bought = false;
+                    }
+                }
             });
         });
+    }
+
+    async getStudent(mail) {
+        let url = `https://localhost:5001/api/student/find/${mail}`;
+        return fetch(url)
+            .then(student => {
+                if (student.ok) {
+                    return student.json().then(student => ({ student }));
+                }
+                console.log("error reading student from database");
+            });
+    }
+
+    async getCourses(studentId) {
+        let url = `https://localhost:5001/api/courseStudent/${studentId}`;
+        return fetch(url)
+            .then(courses => {
+                if (courses.ok) {
+                    return courses.json().then(courses => ({ courses }));
+                }
+                console.log("error reading courses from database");
+            });
     }
 
     addRow(course) {
