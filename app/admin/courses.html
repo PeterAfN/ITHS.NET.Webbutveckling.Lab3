@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="/content/css/landing-page.css" />
     <link rel="stylesheet" href="/content/css/styles.css" />
     <link rel="stylesheet" href="/content/css/utilities.css" />
+    <link rel="stylesheet" href="/content/css/admin/students.css" />
     <!-- ****** media queries ****** -->
     <link
       rel="stylesheet"
@@ -33,12 +34,13 @@
     <title>WestCoast Education</title>
   </head>
   <body>
-    <header>
+
+    <header>     
       <!-- ****** navbar ****** -->
       <nav id="main-navbar" class="navbar navbar-main">
         <ul>
           <a href="/index.html"><i class="fas fa-angle-left"></i></a>
-          <li><a href="/app/admin/admin.html" class="active">Admin</a></li>
+          <li><a href="#" class="active">Admin</a></li>
         </ul>
         <h2 class="logo">
           <span class="text-primary"
@@ -47,20 +49,35 @@
           Education<sup>&reg;</sup>
         </h2>
       </nav>
+
+      <section id="menu-bar">
+        <ul>
+          <li>
+            <a id="students-button" class="active" href="../admin/students.html">
+              <i class="fas fa-user-graduate"></i> Studentlista
+            </a>
+          </li>
+          <li>
+            <a id="courses-button" href="#">
+              <i class="fas fa-list"></i> Kurslista
+            </a>
+          </li>
+        </ul>
+      </section>
+
     </header>
+
     <main></main>
-    <footer id="main-footer" class="py-2">
-      <!-- ****** footer ****** -->
-      <div class="grid-items-autofit-same-size">
-        <div class="footer-columns">
-          <form></form>
-        </div>
-        <div></div>
-        <div>
-          <h3>Registrering</h3>
-        </div>
-      </div>
-      <p>WestCoast Education &copy; 2021, All Rights Reserved</p>
-    </footer>
+<br><br><br><br><br>
+
+<footer id="main-footer">
+    <div class="grid-items-autofit-same-size">
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+    <p>WestCoast Education &copy; 2021, All Rights Reserved</p>
+  </footer>
+    <script src="../../scripts/Admin/Courses.js"></script>
   </body>
 </html>

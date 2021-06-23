@@ -1,0 +1,16 @@
+#menu-bar ul {
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    align-items: center;
+    justify-content: space-evenly;
+    background-color: var(--primary-color);
+    color: var(--light-color);
+    position: fixed;
+    top: 4.4rem;
+    padding: 0 2rem;
+    width: 100%;
+    height: 2.4rem;
+    opacity: 0.95;
+    /* cursor: pointer; */
+  }
