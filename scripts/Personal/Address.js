@@ -1,7 +1,6 @@
 "use strict";
 
 window.addEventListener('DOMContentLoaded', (event) => {
-    // console.log(event);
     let address = new Address();
 });
 
@@ -14,15 +13,15 @@ class Address {
             this.addEventListeners();
 
             this.id = -1;
-            this.firstname = document.querySelector('#personal-firstname');
-            this.lastname = document.querySelector('#personal-lastname');
-            this.street = document.querySelector('#personal-street');
-            this.city = document.querySelector('#personal-city');
-            this.stateprovince = document.querySelector('#personal-stateprovince');
-            this.postalcode = document.querySelector('#personal-postalcode');
-            this.country = document.querySelector('#personal-country');
-            this.email = document.querySelector('#personal-email');
-            this.mobile = document.querySelector('#personal-mobile');
+            this.firstname = document.querySelector('#address-firstname');
+            this.lastname = document.querySelector('#address-lastname');
+            this.street = document.querySelector('#address-street');
+            this.city = document.querySelector('#address-city');
+            this.stateprovince = document.querySelector('#address-stateprovince');
+            this.postalcode = document.querySelector('#address-postalcode');
+            this.country = document.querySelector('#address-country');
+            this.email = document.querySelector('#address-email');
+            this.mobile = document.querySelector('#address-mobile');
         }
     }
 

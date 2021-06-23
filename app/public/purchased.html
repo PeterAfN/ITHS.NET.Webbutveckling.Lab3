@@ -6,10 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../../content/css/navigation.css" />
     <link rel="stylesheet" href="../../content/css/colors.css" />
-    <link rel="stylesheet" href="../../content/css/landing-page.css" />
     <link rel="stylesheet" href="../../content/css/styles.css" />
-    <link rel="stylesheet" href="../../content/css/utilities.css" />
-    <link rel="stylesheet" href="../../content/css/personal.css" />
+    <link rel="stylesheet" href="../../content/css/purchased.css" />
 
     <!--#region - media queries -->
     <link
@@ -52,18 +50,17 @@
           </span>
           Education<sup>&reg;</sup>
         </h2>
-        <a href="/app/public/personal.html" class="active"
+        <a href="#" class="active"
           ><i
-            class="fas fa-user-cog fa-1x personal-icon-my-page"
+            class="fas fa-user-cog fa-1x address-icon-my-page"
             title="Min Sida - Personliga inställningar"
           ></i
         ></a>
       </nav>
-
       <section id="menu-bar">
         <ul>
           <li>
-            <a id="address-button" class="active">
+            <a id="address-button" class="active" href="../public/address.html">
               <i class="far fa-address-card"></i> Adressuppgifter
             </a>
           </li>
@@ -74,72 +71,28 @@
           </li>
         </ul>
       </section>
-
     </header>
+
     <main>
-      <section id="address-container">
-        <form>
-          <p>Adressuppgifter:</p>
-          <input
-            id="personal-firstname"
-            type="text"
-            class="form-control"
-            placeholder="Förnamn"
-          />
-          <input
-            id="personal-lastname"
-            type="text"
-            class="form-control"
-            placeholder="Efternamn"
-          />
-          <input
-            id="personal-street"
-            type="text"
-            class="form-control"
-            placeholder="Gata"
-          />
-          <input
-            id="personal-city"
-            type="text"
-            class="form-control"
-            placeholder="Stad"
-          />
-          <input
-            id="personal-stateprovince"
-            type="text"
-            class="form-control"
-            placeholder="Län"
-          />
-          <input
-            id="personal-postalcode"
-            type="text"
-            class="form-control"
-            placeholder="Postnummer"
-          />
-          <input
-            id="personal-country"
-            type="text"
-            class="form-control"
-            placeholder="Land"
-          />
-          <input
-            id="personal-email"
-            type="text"
-            class="form-control"
-            placeholder="Epost"
-          />
-          <input
-            id="personal-mobile"
-            type="text"
-            class="form-control"
-            placeholder="Mobilnummer"
-          />
-          <div class="buttons">
-            <button class="btn" id="save" type="button">Spara</button>
-          </div>
-        </form>
+      <section id="table-purchased-container">
+        <p>Köpta kurser:</p>
+        <table id="purchased-table">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Kurs</th>
+              <th>Beskrivning</th>
+              <th>Längd</th>
+              <th>Nivå</th>
+              <th>Pris</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody id="table-purchased-content"></tbody>
+        </table>
       </section>
     </main>
+
     <footer id="main-footer">
       <div class="grid-items-autofit-same-size">
         <div></div>
@@ -148,6 +101,6 @@
       </div>
       <p>WestCoast Education &copy; 2021, All Rights Reserved</p>
     </footer>
-    <script src="../../scripts/Personal/Address.js"></script>
+    <script src="../../scripts/Personal/Purchased.js"></script>
   </body>
 </html>

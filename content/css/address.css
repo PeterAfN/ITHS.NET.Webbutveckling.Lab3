@@ -1,5 +1,3 @@
-/*#region - shopping cart bar */
-
 #menu-bar ul {
   display: flex;
   flex-direction: row;
@@ -23,6 +21,12 @@
   text-decoration: none;
   z-index: 1;
   cursor: pointer;
+
+}
+
+#address-button {
+  padding-bottom: 4px;
+  border-bottom: 1px solid var(--light-color);
 }
 
 #address-button:hover,

@@ -11,8 +11,6 @@ let courses = new Courses();
 let shoppingCart = new ShoppingCart("https://localhost:5001/api/courseStudent");
 let shoppingCartBar = new ShoppingCartBar(0);
 let register = new Register("https://localhost:5001/api/student/");
-// let purchased = new Purchased();
-// let address = new Address();
 
 const modalOverlayShoppingCart = document.querySelector(".modal-overlay-shopping-cart");
 const modalOverlayBuy = document.querySelector(".modal-overlay-buy");
