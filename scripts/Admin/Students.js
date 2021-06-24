@@ -17,9 +17,55 @@ class Students {
 
         emailSearchButton.addEventListener("click", (e) => {
             e.preventDefault();
-            getStudent(searchInput.value);
+            this.handleSearchClick();
         });
     }
+
+    handleSearchClick() {
+        let inputEmail = document.querySelector("main input[placeholder]");
+        let mail = inputEmail.value;
+        if (mail === "" || mail === "*") {
+            this.clearTable();
+            this.addStudentsToTable();
+        }
+        else this.addStudentToTable(mail);
+    }
+
+    addStudentToTable(mail) {
+        this.getStudentFromAPI(mail).then(student => {
+            this.clearTable();
+            if (student !== undefined)
+            {
+                this.addRow(Object.values(student)[0]);               
+            }
+        });
+    }
+
+    // isTableEmpty() {
+    //     let tbody = document.querySelector("#table-students-content");
+    //     if (tbody.childElementCount == 0) {
+    //         return true;
+    //     } else return false;
+    // }
+
+    clearTable() {
+        let allTableItems = document.querySelector("#table-students-content");
+        // allTableItems.remove();
+        allTableItems.innerHTML = '';
+    }
+
+    async getStudentFromAPI(mail) {
+        let url = `https://localhost:5001/api/student/find/${mail}`;
+        return fetch(url)
+            .then(student => {
+                if (student.ok) {
+                    return student.json().then(student => ({ student }));
+                }
+                console.log("error reading student from database");
+            });
+    }
+
+
 
     addStudentsToTable() {
         this.getStudentsFromAPI().then(allStudents => {
@@ -62,7 +108,4 @@ class Students {
         );
     }
 
-    getStudent(mail) {
-        getStudentAPI(mail);
-    }
 }
