@@ -34,7 +34,6 @@
     <title>WestCoast Education</title>
   </head>
   <body>
-
     <header>     
       <!-- ****** navbar ****** -->
       <nav id="main-navbar" class="navbar navbar-main">
@@ -49,7 +48,6 @@
           Education<sup>&reg;</sup>
         </h2>
       </nav>
-
       <section id="menu-bar">
         <ul>
           <li>
@@ -64,12 +62,40 @@
           </li>
         </ul>
       </section>
-
     </header>
+    <main>
+      <p>Registrerade studenter:</p>
+      <form>
+        <input
+          class="search-student-input"
+          type="email"
+          placeholder="Sök student med epostadress"
+        />
+        <input
+          type="submit"
+          value="Sök"
+          class="search-student-btn btn"
+        />
+      </form>
 
-    <main></main>
-<br><br><br><br><br>
+      <section id="table-students-container">
+        <table id="purchased-table">
+          <thead>
+            <tr>
+              <th>Förnamn</th>
+              <th>Efternamn</th>
+              <th>Gata</th>
+              <th>Stad</th>
+              <th>Län</th>
+              <th>Postnummer</th>
+              <th>Land</th>
+            </tr>
+          </thead>
+          <tbody id="table-students-content"></tbody>
+        </table>
+      </section>
 
+    </main>
 <footer id="main-footer">
   <div class="grid-items-autofit-same-size">
     <div></div>

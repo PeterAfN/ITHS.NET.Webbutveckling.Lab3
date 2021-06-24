@@ -1,8 +1,6 @@
 "use strict";
 
-// window.addEventListener('DOMContentLoaded', (event) => {
-window.addEventListener('load', (event) => {
-
+window.addEventListener('DOMContentLoaded', (event) => {
     let purchased = new Purchased();
 });
 
@@ -82,14 +80,14 @@ class Purchased {
         var tableData = document.getElementById('purchased-table').getElementsByTagName('tbody').item(0);
 
         // Read table row nodes.
-        var rowData = tableData.getElementsByTagName('tr'); 
+        var rowData = tableData.getElementsByTagName('tr');
 
-        for(var i = 0; i < rowData.length - 1; i++) {
-            for(var j = 0; j < rowData.length - (i + 1); j++) {
+        for (var i = 0; i < rowData.length - 1; i++) {
+            for (var j = 0; j < rowData.length - (i + 1); j++) {
 
                 //Swap row nodes if short condition matches
-                if(parseInt(rowData.item(j).getElementsByTagName('td').item(0).innerHTML) > parseInt(rowData.item(j+1).getElementsByTagName('td').item(0).innerHTML)) {
-                    tableData.insertBefore(rowData.item(j+1),rowData.item(j));
+                if (parseInt(rowData.item(j).getElementsByTagName('td').item(0).innerHTML) > parseInt(rowData.item(j + 1).getElementsByTagName('td').item(0).innerHTML)) {
+                    tableData.insertBefore(rowData.item(j + 1), rowData.item(j));
                 }
             }
         }
