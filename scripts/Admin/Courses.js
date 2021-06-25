@@ -4,19 +4,6 @@ window.addEventListener('DOMContentLoaded', (event) => {
     let courses = new Courses();
 });
 
-
-const modalOverlayEditCourse = document.querySelector(".modal-overlay-edit");
-
-// document.addEventListener("click", (e) => {
-//   CloseCorrectOverlay(e);
-// });
-
-// function CloseCorrectOverlay (event) {
-//   if (event.target === modalOverlayEditCourse) {
-//     this.toggle();
-//   }
-// }
-
 class Courses {
 
     constructor() {
@@ -29,8 +16,6 @@ class Courses {
         this.priceInput = document.querySelector('#price');
         this.statusInput = document.querySelector('#active');
 
-        this.statusInput.checked = true;
-        this.idInput.value = "fdsfsdf";
         this.addEventListeners();
         this.addCoursesToTable();
     }
@@ -47,7 +32,7 @@ class Courses {
             this.handleSearchClick();
         });
         document.addEventListener("click", (e) => {
-            if (e.target === modalOverlayEditCourse) {
+            if (e.target === this.modalOverlayEditCourse) {
                 _this.toggle();
             }
         });
@@ -75,8 +60,8 @@ class Courses {
         else this.addCourseToTable(number);
     }
 
-    addCourseToTable(mail) {
-        this.getCourseFromAPI(mail).then(course => {
+    addCourseToTable(number) {
+        this.getCourseFromAPI(number).then(course => {
             this.clearTable();
             if (course !== undefined) {
                 this.addRow(Object.values(course)[0]);
@@ -151,19 +136,74 @@ class Courses {
 
         lastCourseButton.addEventListener("click", function addEL(event) {
             _this.toggle();
-            //call a new function that add values to the modal form with selectedCourseId
+            _this.addValuesToEditModel(selectedCourseId);
         });
     }
 
-    toggle() {
-        // const modal = document.querySelector(".modal-edit-course");
-        // modal.classList.toggle("closed-edit-course");
-        // this.modalOverlayEditCourse.classList.toggle("closed-edit-course");
+    addValuesToEditModel(selectedCourseId) {
+        this.getCourseFromAPI(selectedCourseId).then(course => {
+            if (course !== undefined) {
+                let c = Object.values(course)[0];
 
+                this.idInput.value = c.id;
+                this.titleInput.value = c.titel;
+                this.descriptionInput.value = c.description;
+                this.lengthInput.value = c.length;
+                this.difficultyInput.value = c.difficulty;
+                this.priceInput.value = c.price;
+
+                if (c.status === "aktiv")
+                    this.statusInput.checked = true;
+                else this.statusInput.checked = false;
+            }
+        });
+    }
+
+    async save() {
+        let _this = this;
+        let course = {
+            id: Number(this.idInput.value),
+            titel: this.titleInput.value,
+            description: this.descriptionInput.value,
+            length: Number(this.lengthInput.value),
+            difficulty: this.difficultyInput.value,
+            status: (this.statusInput.checked ? "aktiv" : "pensionerad"),
+            price: Number(this.priceInput.value),
+        };
+        await fetch(`https://localhost:5001/api/course/${Number(this.idInput.value)}`, {
+            method: "PUT",
+            mode: "cors",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(course),
+        })
+            .then(function (text) {
+                switch (text.status) {
+                    case 500:
+                        console.log("Kursen kunde inte sparas! Kontrollera så att kursnumret inte används redan! ", "felkod: " + text.status);
+                        break;
+                    case 204:
+                    case 201:
+                        _this.clearTable();
+                        _this.addCoursesToTable();
+                        console.log("Kursen sparades korrekt!");
+                        break;
+                    default:
+                        console.log(text.status);
+                        break;
+                }
+            })
+            .catch(function (error) {
+                console.log('Kursen kunde inte sparas! Har fälten rätt värden?', error);
+            });
+    }
+
+
+    toggle() {
         const modalAdd = document.querySelector(".modal-edit");
         modalAdd.classList.toggle("closed-edit");
-        // this.modalOverlayEditCourse.classList.toggle("close-overlay-edit");
-        modalOverlayEditCourse.classList.toggle("close-overlay-edit");
+        this.modalOverlayEditCourse.classList.toggle("close-overlay-edit");
     }
 
 }
