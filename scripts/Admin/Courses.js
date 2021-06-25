@@ -4,12 +4,23 @@ window.addEventListener('DOMContentLoaded', (event) => {
     let courses = new Courses();
 });
 
+
+const modalOverlayEditCourse = document.querySelector(".modal-overlay-edit");
+
+// document.addEventListener("click", (e) => {
+//   CloseCorrectOverlay(e);
+// });
+
+// function CloseCorrectOverlay (event) {
+//   if (event.target === modalOverlayEditCourse) {
+//     this.toggle();
+//   }
+// }
+
 class Courses {
 
     constructor() {
-        this.selectedCourseId = -1;
-
-        this.modalOverlayEditCourse = document.querySelector(".modal-overlay-edit-course");
+        this.modalOverlayEditCourse = document.querySelector(".modal-overlay-edit");
         this.idInput = document.querySelector('#id');
         this.titleInput = document.querySelector('#title');
         this.descriptionInput = document.querySelector('#description');
@@ -25,6 +36,7 @@ class Courses {
     }
 
     addEventListeners() {
+        let _this = this;
         let courseSearchButton = document.querySelector(".search-course-btn");
         let saveButton = document.querySelector("#save");
         let cancelButton = document.querySelector("#cancel");
@@ -35,8 +47,8 @@ class Courses {
             this.handleSearchClick();
         });
         document.addEventListener("click", (e) => {
-            if (e.target === this.modalOverlayEditCourse) {
-                this.toggle();
+            if (e.target === modalOverlayEditCourse) {
+                _this.toggle();
             }
         });
         saveButton.addEventListener("click", (e) => {
@@ -138,15 +150,20 @@ class Courses {
         const selectedCourseId = lastCourseButton.parentNode.firstElementChild.firstChild.nodeValue;
 
         lastCourseButton.addEventListener("click", function addEL(event) {
-            _this.toggle(selectedCourseId);
-            //call a new function that add values to the modal form
+            _this.toggle();
+            //call a new function that add values to the modal form with selectedCourseId
         });
     }
 
-    toggle(id = -1) {
-        const modal = document.querySelector(".modal-edit-course");
-        modal.classList.toggle("closed-edit-course");
-        this.modalOverlayEditCourse.classList.toggle("closed-edit-course");
+    toggle() {
+        // const modal = document.querySelector(".modal-edit-course");
+        // modal.classList.toggle("closed-edit-course");
+        // this.modalOverlayEditCourse.classList.toggle("closed-edit-course");
+
+        const modalAdd = document.querySelector(".modal-edit");
+        modalAdd.classList.toggle("closed-edit");
+        // this.modalOverlayEditCourse.classList.toggle("close-overlay-edit");
+        modalOverlayEditCourse.classList.toggle("close-overlay-edit");
     }
 
 }

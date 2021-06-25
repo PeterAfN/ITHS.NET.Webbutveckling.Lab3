@@ -122,7 +122,7 @@ input[value] {
 
 /*#region - edit course modal */
 
-.modal-edit-course {
+.modal-edit {
   max-width: 400px;
   width: 90vw;
   position: fixed;
@@ -139,7 +139,7 @@ input[value] {
   /* overflow: hidden; */
 }
 
-.modal-edit-course {
+.modal-edit {
   overflow: hidden;
 }
 
@@ -177,7 +177,7 @@ input[type="text"] {
   padding: 0.4rem;
 }
 
-.modal-edit-course #close-button-edit {
+.modal-edit #close-button-edit {
   opacity: 1;
   position: absolute;
   z-index: 1;
@@ -190,16 +190,31 @@ input[type="text"] {
   font-size: 1.8rem;
 }
 
-.modal-edit-course #close-button-edit:hover,
-.modal-edit-course #close-button-edit:focus {
+.modal-edit #close-button-edit:hover,
+.modal-edit #close-button-edit:focus {
   opacity: 0.7;
   text-decoration: none;
   cursor: pointer;
 }
 
-.modal-edit-course p,
-.modal-edit-course .buttons {
+.modal-edit p,
+.modal-edit .buttons {
   align-self: center;
+}
+
+.closed-edit,
+.close-overlay-edit{
+  display: none;
+}
+
+.modal-overlay-edit{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 50;
+  background: rgba(0, 0, 0, 0.6);
 }
 
 /*#endregion - edit course modal */
