@@ -67,8 +67,42 @@
 
     </header>
 
-    <main></main>
-<br><br><br><br><br>
+    <main>
+
+      <p>Alla kurser:</p>
+      <form>
+        <input
+          class="search-course-input"
+          type="email"
+          placeholder="Sök och visa kurs med kursnummer"
+        />
+        <input
+          type="submit"
+          value="Sök"
+          class="search-course-btn btn"
+        />
+      </form>
+
+      <section id="table-courses-container">
+        <table id="courses-table">
+          <thead>
+            <tr>
+              <th>Kursnummer</th>
+              <th>Kurs</th>
+              <th>Beskrivning</th>
+              <th>Längd</th>
+              <th>Nivå</th>
+              <th>Pris</th>
+              <th>Aktiv</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody id="table-courses-content"></tbody>
+        </table>
+      </section>
+
+    </main>
+
 
 <footer id="main-footer">
     <div class="grid-items-autofit-same-size">

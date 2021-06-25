@@ -12,7 +12,6 @@ class Students {
     }
 
     addEventListeners() {
-        let searchInput = document.querySelector(".search-student-input");
         let emailSearchButton = document.querySelector(".search-student-btn");
 
         emailSearchButton.addEventListener("click", (e) => {
@@ -34,19 +33,11 @@ class Students {
     addStudentToTable(mail) {
         this.getStudentFromAPI(mail).then(student => {
             this.clearTable();
-            if (student !== undefined)
-            {
-                this.addRow(Object.values(student)[0]);               
+            if (student !== undefined) {
+                this.addRow(Object.values(student)[0]);
             }
         });
     }
-
-    // isTableEmpty() {
-    //     let tbody = document.querySelector("#table-students-content");
-    //     if (tbody.childElementCount == 0) {
-    //         return true;
-    //     } else return false;
-    // }
 
     clearTable() {
         let allTableItems = document.querySelector("#table-students-content");

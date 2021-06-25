@@ -73,7 +73,7 @@ input[value] {
 
 
 
-/*#region -  students courses table */
+/*#region -  students table */
 
 #table-students-container {
   display: flex;
@@ -122,4 +122,4 @@ input[value] {
   overflow: hidden;
 }
 
-/*#endregion - students courses table */
+/*#endregion - students table */
