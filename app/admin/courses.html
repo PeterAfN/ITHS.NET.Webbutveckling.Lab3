@@ -87,7 +87,7 @@
         <table id="courses-table">
           <thead>
             <tr>
-              <th>Kursnummer</th>
+              <th>Kursnr</th>
               <th>Kurs</th>
               <th>Beskrivning</th>
               <th>Längd</th>
@@ -100,6 +100,60 @@
           <tbody id="table-courses-content"></tbody>
         </table>
       </section>
+
+      <!--#region - admin/courses.js -->
+      <div class="modal-overlay-edit-course closed-edit-course"></div>
+      <div class="modal-edit-course closed-edit-course">
+        <button id="close-button-edit">&times;</button>
+        <section id="edit-container">
+          <form>
+            <p>Ändra kursdata</p>
+            <input
+              id="id"
+              type="text"
+              class="form-control"
+              placeholder="Kursnummer"
+            />
+            <input
+              id="title"
+              type="text"
+              class="form-control"
+              placeholder="Kursnamn"
+            />
+            <input
+              id="description"
+              type="text"
+              class="form-control"
+              placeholder="Kursbeskrivning"
+            />
+            <input
+              id="length"
+              type="text"
+              class="form-control"
+              placeholder="Längd"
+            />
+            <input
+              id="difficulty"
+              type="text"
+              class="form-control"
+              placeholder="Nivå på kursen"
+            />
+            <input
+              id="price"
+              type="text"
+              class="form-control"
+              placeholder="Pris"
+            />
+            <label ><input id="active" type="checkbox"/> Aktiv</label>
+            <div class="buttons">
+              <button class="btn" id="save">Save</button>
+              <button class="btn" id="cancel">Cancel</button>
+            </div>
+          </form>
+        </section>
+
+      </div>
+      <!--#endregion - admin/courses.js -->
 
     </main>
 

@@ -7,16 +7,49 @@ window.addEventListener('DOMContentLoaded', (event) => {
 class Courses {
 
     constructor() {
+        this.selectedCourseId = -1;
+
+        this.modalOverlayEditCourse = document.querySelector(".modal-overlay-edit-course");
+        this.idInput = document.querySelector('#id');
+        this.titleInput = document.querySelector('#title');
+        this.descriptionInput = document.querySelector('#description');
+        this.lengthInput = document.querySelector('#length');
+        this.difficultyInput = document.querySelector('#difficulty');
+        this.priceInput = document.querySelector('#price');
+        this.statusInput = document.querySelector('#active');
+
+        this.statusInput.checked = true;
+        this.idInput.value = "fdsfsdf";
         this.addEventListeners();
         this.addCoursesToTable();
     }
 
     addEventListeners() {
         let courseSearchButton = document.querySelector(".search-course-btn");
+        let saveButton = document.querySelector("#save");
+        let cancelButton = document.querySelector("#cancel");
+        let closeButtonAdd = document.querySelector("#close-button-edit");
 
         courseSearchButton.addEventListener("click", (e) => {
             e.preventDefault();
             this.handleSearchClick();
+        });
+        document.addEventListener("click", (e) => {
+            if (e.target === this.modalOverlayEditCourse) {
+                this.toggle();
+            }
+        });
+        saveButton.addEventListener("click", (e) => {
+            e.preventDefault();
+            this.save();
+            this.toggle();
+        });
+        cancelButton.addEventListener("click", (e) => {
+            e.preventDefault();
+            this.toggle();
+        });
+        closeButtonAdd.addEventListener("click", () => {
+            this.toggle();
         });
     }
 
@@ -35,6 +68,7 @@ class Courses {
             this.clearTable();
             if (course !== undefined) {
                 this.addRow(Object.values(course)[0]);
+                this.addEventListenerToEdit();
             }
         });
     }
@@ -55,13 +89,12 @@ class Courses {
             });
     }
 
-
-
     addCoursesToTable() {
         this.getCoursesFromAPI().then(allcourses => {
             let courses = Object.values(allcourses)[0];
             for (let course of courses) {
                 this.addRow(course);
+                this.addEventListenerToEdit();
             }
         });
     }
@@ -78,7 +111,6 @@ class Courses {
     }
 
     addRow(course) {
-        console.log(course);
         const tableCoursesContent = document.querySelector("#table-courses-content");
 
         tableCoursesContent.insertAdjacentHTML(
@@ -92,10 +124,29 @@ class Courses {
                     <td>${course.difficulty}</td>
                     <td>${course.price}</td>
                     <td>${course.status}</td>
-                    <td class="cart-btn-table add" title="Klicka för att ändra i kurs."><i class="far fa-edit"></i></td>
+                    <td id="${course.id}" class="cart-btn-table edit" title="Klicka för att ändra i kurs."><i class="far fa-edit"></i></td>
                 </tr>
             `
         );
+    }
+
+    addEventListenerToEdit() {
+        let _this = this;
+        const editCourseButtons = document.querySelectorAll("#table-courses-container .edit");
+        var lastCourseButton = editCourseButtons[editCourseButtons.length - 1];
+        this.selectedCourseId = lastCourseButton.parentNode.firstElementChild.firstChild.nodeValue;
+        const selectedCourseId = lastCourseButton.parentNode.firstElementChild.firstChild.nodeValue;
+
+        lastCourseButton.addEventListener("click", function addEL(event) {
+            _this.toggle(selectedCourseId);
+            //call a new function that add values to the modal form
+        });
+    }
+
+    toggle(id = -1) {
+        const modal = document.querySelector(".modal-edit-course");
+        modal.classList.toggle("closed-edit-course");
+        this.modalOverlayEditCourse.classList.toggle("closed-edit-course");
     }
 
 }
