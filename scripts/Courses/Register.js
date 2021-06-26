@@ -76,6 +76,11 @@ class Register {
         });
         if (response.status !== 201) throw new Error(response.statusText);
         else {
+            let allTableItems = document.querySelector("#table-courses-content");
+            allTableItems.innerHTML = '';
+            courses.getData();
+
+
             localStorage.setItem("WestcoastEducation_IsUserRegistered", true);
             localStorage.setItem("WestcoastEducation_RegisteredEmail", person.mail);
             this.toggle();
