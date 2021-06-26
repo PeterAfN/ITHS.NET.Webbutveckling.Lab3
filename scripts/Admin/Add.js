@@ -31,6 +31,11 @@ class Add {
         closeButtonAdd.addEventListener("click", () => {
             this.toggle();
         });
+        document.addEventListener("click", (e) => {
+            if (e.target === this.modalOverlayAdd) {
+                this.toggle();
+            }
+        });
     }
 
     async save() {
@@ -52,7 +57,7 @@ class Add {
             price: Number(priceInput.value),
         };
 
-        await fetch(`${this.baseUrl}`, {
+        await fetch(`${"https:/localhost:5001/api/course/"}`, {
             method: "POST",
             mode: "cors",
             headers: {
@@ -62,10 +67,12 @@ class Add {
         })
             .then(function (text) {
                 switch (text.status) {
+                    case 405:
                     case 500:
                         console.log("Kursen kunde inte sparas! Kontrollera så att kursnumret inte används redan! ", "felkod: " + text.status);
                         break;
                     case 201:
+                        courses.handleSearchClick()
                         console.log("Kursen sparades korrekt!");
                         break;
                     default:
