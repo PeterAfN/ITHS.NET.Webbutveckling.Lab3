@@ -19,16 +19,11 @@ class Courses {
 
     addEventListeners() {
         let courseSearchButton = document.querySelector(".search-course-btn");
-        // let addCourseButton = document.querySelector(".add-course-btn")
 
         courseSearchButton.addEventListener("click", (e) => {
             e.preventDefault();
             this.handleSearchClick();
         });
-        // addCourseButton.addEventListener("click", (e) => {
-        //     e.preventDefault();
-        //     this.handleSearchClick();
-        // });
     }
 
     handleSearchClick() {

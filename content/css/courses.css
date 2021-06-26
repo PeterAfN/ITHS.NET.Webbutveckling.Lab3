@@ -1,5 +1,4 @@
-/*#region - Add, Register */
-.modal-add,
+/*#region - Register */
 .modal-register {
   max-width: 400px;
   width: 90vw;
@@ -16,7 +15,6 @@
   font-weight: 500;
 }
 
-#add-container,
 #register-container form {
   display: flex;
   flex-direction: column;
@@ -25,13 +23,10 @@
   margin: 1rem 3rem 1rem;
 }
 
-#add-container p,
 #register-container p {
   margin: 1.1rem 0rem 0.3rem;
 }
 
-#add-container #save,
-#add-container #cancel,
 #register-container #save,
 #register-container #cancel {
   cursor: pointer;
@@ -43,8 +38,6 @@
   z-index: 1;
 }
 
-#add-container #save:hover,
-#add-container #cancel:hover,
 #register-container #save:hover,
 #register-container #cancel:hover {
   border-color: var(--secondary-color);
@@ -55,9 +48,9 @@ input[type="text"] {
   width: 100%;
   padding: 0.4rem;
 }
-/*#endregion - Add, Register */
+/*#endregion - Register */
 
-/*#region - Modal ( 'Shopping Cart' 'Buy Confirmation' 'Add Courses' 'Register' ) */
+/*#region - Modal ( 'Shopping Cart' 'Buy Confirmation' 'Register' ) */
 .modal-shopping-cart {
   width: 90vw;
   max-width: 600px;
@@ -119,8 +112,6 @@ input[type="text"] {
 .closed-shopping-cart,
 .closed-buy,
 .close-overlay-buy,
-.closed-add,
-.close-overlay-add,
 .closed-register,
 .close-overlay-register {
   display: none;
@@ -128,7 +119,6 @@ input[type="text"] {
 
 .modal-overlay-shopping-cart,
 .modal-overlay-buy,
-.modal-overlay-add,
 .modal-overlay-register {
   position: fixed;
   top: 0;
@@ -183,14 +173,12 @@ input[type="text"] {
 
 .modal-shopping-cart,
 .modal-buy,
-.modal-add,
 .modal-register {
   overflow: hidden;
 }
 
 .modal-shopping-cart #close-button,
 .modal-buy #close-button-buy,
-.modal-add #close-button-add,
 .modal-register #close-button-register {
   opacity: 1;
   position: absolute;
@@ -208,8 +196,6 @@ input[type="text"] {
 .modal-shopping-cart #close-button:focus,
 .modal-buy #close-button-buy:hover,
 .modal-buy #close-button-buy:focus,
-.modal-add #close-button-add:hover,
-.modal-add #close-button-add:focus,
 .modal-register #close-button-register:hover,
 .modal-register #close-button-register:hover {
   opacity: 0.7;
@@ -248,7 +234,7 @@ input[type="text"] {
   cursor: pointer;
 }
 
-/*#endregion - Modal ( 'Shopping Cart' 'Buy Confirmation' 'Add Courses' 'Register ) */
+/*#endregion - Modal ( 'Shopping Cart' 'Buy Confirmation' 'Register ) */
 
 /*#region - shopping cart bar */
 
@@ -256,7 +242,7 @@ input[type="text"] {
   display: flex;
   text-align: center;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: flex-end;
   background-color: var(--primary-color);
   color: var(--light-color);
   position: fixed;
@@ -268,16 +254,14 @@ input[type="text"] {
   /* cursor: pointer; */
 }
 
-#open-button,
-#add-button {
+#open-button {
   color: var(--light-color);
   text-decoration: none;
   z-index: 1;
   cursor: pointer;
 }
 
-#open-button:hover,
-#add-button:hover {
+#open-button:hover {
   opacity: 0.7;
 }
 
