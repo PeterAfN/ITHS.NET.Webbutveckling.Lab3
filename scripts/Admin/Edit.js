@@ -4,21 +4,21 @@ class Edit {
 
     constructor() {
         this.modalOverlayEditCourse = document.querySelector(".modal-overlay-edit");
-        this.idInput = document.querySelector('#id');
-        this.titleInput = document.querySelector('#title');
-        this.descriptionInput = document.querySelector('#description');
-        this.lengthInput = document.querySelector('#length');
-        this.difficultyInput = document.querySelector('#difficulty');
-        this.priceInput = document.querySelector('#price');
-        this.statusInput = document.querySelector('#active');
+        this.idInput = document.querySelector('.modal-edit #id');
+        this.titleInput = document.querySelector('.modal-edit #title');
+        this.descriptionInput = document.querySelector('.modal-edit #description');
+        this.lengthInput = document.querySelector('.modal-edit #length');
+        this.difficultyInput = document.querySelector('.modal-edit #difficulty');
+        this.priceInput = document.querySelector('.modal-edit #price');
+        this.statusInput = document.querySelector('.modal-edit #active');
 
         this.addEventListeners();
     }
 
     addEventListeners() {
-        let saveButton = document.querySelector("#save");
-        let cancelButton = document.querySelector("#cancel");
-        let closeButtonEdit = document.querySelector("#close-button-edit");
+        let saveButton = document.querySelector(".modal-edit #save");
+        let cancelButton = document.querySelector(".modal-edit #cancel");
+        let closeButtonEdit = document.querySelector(".modal-edit #close-button-edit");
 
         saveButton.addEventListener("click", (e) => {
             e.preventDefault();

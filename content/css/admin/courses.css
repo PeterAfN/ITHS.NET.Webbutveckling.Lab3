@@ -51,7 +51,7 @@ form {
 
 input[placeholder] {
   height: 31px;
-  width: 18%;
+  width: 27%;
   text-align: left;
   padding: 0.6rem;
   margin-right: 1rem;
@@ -59,6 +59,7 @@ input[placeholder] {
 
 input[value] {
   width: 10%;
+  margin-right: 15px;
   text-align: center;
   background-color: var(--primary-color);
   color: var(--light-color);
@@ -119,8 +120,9 @@ input[value] {
 
 /*#endregion - courses table */
 
-/*#region - edit course modal */
+/*#region - edit/add course modal */
 
+.modal-add,
 .modal-edit {
   max-width: 400px;
   width: 90vw;
@@ -135,10 +137,12 @@ input[value] {
   color: var(--secondary-color);
 }
 
+.modal-add,
 .modal-edit {
   overflow: hidden;
 }
 
+#add-container form,
 #edit-container form {
   display: flexbox;
   flex-direction: column;
@@ -147,10 +151,13 @@ input[value] {
   margin: 1rem 3rem 1rem;
 }
 
+#add-container p,
 #edit-container p {
   margin: 1.1rem 0rem 0.3rem;
 }
 
+#add-container #save,
+#add-container #cancel,
 #edit-container #save,
 #edit-container #cancel {
   cursor: pointer;
@@ -162,6 +169,8 @@ input[value] {
   z-index: 1;
 }
 
+#add-container #save:hover,
+#add-container #cancel:hover,
 #edit-container #save:hover,
 #edit-container #cancel:hover {
   border-color: var(--secondary-color);
@@ -173,6 +182,7 @@ input[type="text"] {
   padding: 0.4rem;
 }
 
+.modal-add #close-button-add,
 .modal-edit #close-button-edit {
   opacity: 1;
   position: absolute;
@@ -186,6 +196,8 @@ input[type="text"] {
   font-size: 1.8rem;
 }
 
+.modal-add #close-button-add:hover,
+.modal-add #close-button-add:focus,
 .modal-edit #close-button-edit:hover,
 .modal-edit #close-button-edit:focus {
   opacity: 0.7;
@@ -193,17 +205,22 @@ input[type="text"] {
   cursor: pointer;
 }
 
+.modal-add p,
+.modal-add .buttons,
 .modal-edit p,
 .modal-edit .buttons {
   align-self: center;
 }
 
+.closed-add,
+.close-overlay-add,
 .closed-edit,
-.close-overlay-edit{
+.close-overlay-edit {
   display: none;
 }
 
-.modal-overlay-edit{
+.modal-overlay-add,
+.modal-overlay-edit {
   position: fixed;
   top: 0;
   left: 0;
@@ -213,4 +230,8 @@ input[type="text"] {
   background: rgba(0, 0, 0, 0.6);
 }
 
-/*#endregion - edit course modal */
+/*#endregion - edit/add course modal */
+
+/*#region - add course modal */
+
+/*#endregion - add course modal */

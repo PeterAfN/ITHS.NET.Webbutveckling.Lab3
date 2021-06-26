@@ -1,20 +1,19 @@
 "use strict";
 
-
-
-//Add.js is opened from the ShoppingCartBar.js navigation bar and adds new courses to the REST.API.
 class Add {
 
     constructor(baseUrl) {
+        this.modalOverlayAdd = document.querySelector(".modal-overlay-add");
+
         this.baseUrl = baseUrl;
         this.addEventListeners();
     }
 
     addEventListeners() {
-        const addButton = document.querySelector("#add-button");
-        const saveButton = document.querySelector("#save");
-        const cancelButton = document.querySelector("#cancel");
-        const closeButtonAdd = document.querySelector("#close-button-add");
+        const addButton = document.querySelector("#add-container #add-button");
+        const saveButton = document.querySelector("#add-container #save");
+        const cancelButton = document.querySelector("#add-container #cancel");
+        const closeButtonAdd = document.querySelector("#add-container #close-button-add");
 
         addButton.addEventListener("click", () => {
             this.toggle();
@@ -34,13 +33,13 @@ class Add {
     }
 
     async save() {
-        const idInput = document.querySelector('#id');
-        const titleInput = document.querySelector('#title');
-        const descriptionInput = document.querySelector('#description');
-        const lengthInput = document.querySelector('#length');
-        const difficultyInput = document.querySelector('#difficulty');
-        const priceInput = document.querySelector('#price');
-        const statusInput = document.querySelector('#status');
+        const idInput = document.querySelector('#add-container #id');
+        const titleInput = document.querySelector('#add-container #title');
+        const descriptionInput = document.querySelector('#add-container #description');
+        const lengthInput = document.querySelector('#add-container #length');
+        const difficultyInput = document.querySelector('#add-container #difficulty');
+        const priceInput = document.querySelector('#add-container #price');
+        const statusInput = document.querySelector('#add-container #status');
 
         let course = {
             id: Number(idInput.value),
@@ -51,7 +50,6 @@ class Add {
             status: statusInput.value,
             price: Number(priceInput.value),
         };
-
 
         await fetch(`${this.baseUrl}`, {
             method: "POST",
@@ -76,14 +74,11 @@ class Add {
             .catch(function (error) {
                 console.log('Kursen kunde inte sparas! Har fälten rätt värden?', error);
             });
-
-        // if (!response.ok) throw new Error(response.statusText);
-        // return response.json();
     }
 
     toggle() {
         const modalAdd = document.querySelector(".modal-add");
         modalAdd.classList.toggle("closed-add");
-        modalOverlayAdd.classList.toggle("close-overlay-add");
+        this.modalOverlayAdd.classList.toggle("close-overlay-add");
     }
 }

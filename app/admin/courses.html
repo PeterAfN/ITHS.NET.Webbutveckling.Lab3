@@ -34,8 +34,7 @@
     <title>WestCoast Education</title>
   </head>
   <body>
-
-    <header>     
+    <header>
       <!-- ****** navbar ****** -->
       <nav id="main-navbar" class="navbar navbar-main">
         <ul>
@@ -58,17 +57,15 @@
             </a>
           </li>
           <li>
-            <a id="courses-button" class="active"  href="#">
+            <a id="courses-button" class="active" href="#">
               <i class="fas fa-list"></i> Kurslista
             </a>
           </li>
         </ul>
       </section>
-
     </header>
 
     <main>
-
       <p>Alla kurser:</p>
       <form>
         <input
@@ -76,13 +73,66 @@
           type="email"
           placeholder="Sök och visa kurs med kursnummer"
         />
-        <input
-          type="submit"
-          value="Sök"
-          class="search-course-btn btn"
-        />
+        <input type="submit" value="Sök" class="search-course-btn btn" />
+        <input type="submit" value="Lägg till kurs" class="add-course-btn btn" />
       </form>
-
+      <!--#region - Add.js -->
+      <div class="modal-overlay-add close-overlay-add"></div>
+      <div class="modal-add closed-add">
+        <button id="close-button-add">&times;</button>
+        <section id="add-container">
+          <form>
+            <p>Add a new course</p>
+            <input
+              id="id"
+              type="text"
+              class="form-control"
+              placeholder="Kursnummer"
+            />
+            <input
+              id="title"
+              type="text"
+              class="form-control"
+              placeholder="Kursnamn"
+            />
+            <input
+              id="description"
+              type="text"
+              class="form-control"
+              placeholder="Kursbeskrivning"
+            />
+            <input
+              id="length"
+              type="text"
+              class="form-control"
+              placeholder="Längd"
+            />
+            <input
+              id="difficulty"
+              type="text"
+              class="form-control"
+              placeholder="Nivå på kursen"
+            />
+            <input
+              id="price"
+              type="text"
+              class="form-control"
+              placeholder="Pris"
+            />
+            <input
+              id="status"
+              type="text"
+              class="form-control"
+              placeholder="Status"
+            />
+            <div class="buttons">
+              <button class="btn" id="save">Save</button>
+              <button class="btn" id="cancel">Cancel</button>
+            </div>
+          </form>
+        </section>
+      </div>
+      <!--#endregion - Add.js -->
       <section id="table-courses-container">
         <table id="courses-table">
           <thead>
@@ -101,7 +151,7 @@
         </table>
       </section>
 
-      <!--#region - admin/courses.js -->
+      <!--#region - edit.js -->
       <div class="modal-overlay-edit close-overlay-edit"></div>
       <div class="modal-edit closed-edit">
         <button id="close-button-edit">&times;</button>
@@ -144,28 +194,25 @@
               class="form-control"
               placeholder="Pris"
             />
-            <label ><input id="active" type="checkbox"/> Aktiv</label>
+            <label><input id="active" type="checkbox" /> Aktiv</label>
             <div class="buttons">
               <button class="btn" id="save">Save</button>
               <button class="btn" id="cancel">Cancel</button>
             </div>
           </form>
         </section>
-
       </div>
-      <!--#endregion - admin/courses.js -->
-
+      <!--#endregion - edit.js -->
     </main>
 
-
-<footer id="main-footer">
-    <div class="grid-items-autofit-same-size">
-      <div></div>
-      <div></div>
-      <div></div>
-    </div>
-    <p>WestCoast Education &copy; 2021, All Rights Reserved</p>
-  </footer>
+    <footer id="main-footer">
+      <div class="grid-items-autofit-same-size">
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+      <p>WestCoast Education &copy; 2021, All Rights Reserved</p>
+    </footer>
     <script src="../../scripts/Admin/Add.js"></script>
     <script src="../../scripts/Admin/Edit.js"></script>
     <script src="../../scripts/Admin/Courses.js"></script>

@@ -26,7 +26,7 @@ class Courses {
     }
 
     handleSearchClick() {
-        let inputCourseNumber = document.querySelector("main input[placeholder]");
+        let inputCourseNumber = document.querySelector(".search-course-input");
         let number = inputCourseNumber.value;
         if (number === "" || number === "*") {
             this.addCoursesToTable();
