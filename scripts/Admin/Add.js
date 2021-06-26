@@ -10,12 +10,13 @@ class Add {
     }
 
     addEventListeners() {
-        const addButton = document.querySelector("#add-container #add-button");
-        const saveButton = document.querySelector("#add-container #save");
-        const cancelButton = document.querySelector("#add-container #cancel");
-        const closeButtonAdd = document.querySelector("#add-container #close-button-add");
+        const addButton = document.querySelector(".add-course-btn")
+        const saveButton = document.querySelector(".modal-add #save");
+        const cancelButton = document.querySelector(".modal-add #cancel");
+        const closeButtonAdd = document.querySelector(".modal-add #close-button-add");
 
-        addButton.addEventListener("click", () => {
+        addButton.addEventListener("click", (e) => {
+            e.preventDefault();
             this.toggle();
         });
         saveButton.addEventListener("click", (e) => {
