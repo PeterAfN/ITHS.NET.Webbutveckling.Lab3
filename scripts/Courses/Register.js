@@ -1,3 +1,4 @@
+"use strict";
 
 class Register {
 
@@ -13,7 +14,7 @@ class Register {
         const closeButtonRegister = document.querySelector("#close-button-register");
 
         registerButton.addEventListener("click", () => {
-            if (this.isUserRegistered() === "false") {
+            if (this.isUserRegistered() === "false" || this.isUserRegistered() === null) {
                 this.toggle();
             }
 

@@ -15,7 +15,7 @@ class Purchased {
         }
     }
 
-    createTable(courses) {
+    createTable() {
         let _this = this;
         let mail = localStorage.getItem("WestcoastEducation_RegisteredEmail");
         _this.getStudent(mail).then(student => {
@@ -27,7 +27,8 @@ class Purchased {
                         .then((response) => response.json())
                         .then((course) => {
                             _this.addRow(course);
-                            _this.sortData();
+                            var tableData = document.getElementById('purchased-table').getElementsByTagName('tbody').item(0);
+                            _this.sortData(tableData);
                         });
                 }
             });
@@ -57,8 +58,33 @@ class Purchased {
     }
 
     addRow(course) {
-        const tablePurchasedContent = document.querySelector("#table-purchased-content");
+        if (course.status === "aktiv"){
+            const tablePurchasedContent = document.querySelector("#table-purchased-content");
+            tablePurchasedContent.insertAdjacentHTML(
+                "beforeend",
+                `
+                    <tr>
+                        <td>${course.id}</td>
+                        <td>${course.titel}</td>
+                        <td>${course.description}</td>
+                        <td>${course.length}</td>
+                        <td>${course.difficulty}</td>
+                        <td>${course.price}</td>
+                    </tr>
+                `
+            );
+        }
+        else {
+            this.addRowNotActive(course);
+            var tableData = document.getElementById('purchased-not-active-table').getElementsByTagName('tbody').item(0);
+            this.sortData(tableData);
+        }
+    }
 
+    addRowNotActive(course) {
+        const tablePurchasedContent = document.querySelector("#table-purchased-not-active-content");
+
+        console.log(course);
         tablePurchasedContent.insertAdjacentHTML(
             "beforeend",
             `
@@ -75,10 +101,7 @@ class Purchased {
     }
 
     //from https://codereview.stackexchange.com/questions/37632/sorting-an-html-table-with-javascript
-    sortData() {
-        // Read table body node.
-        var tableData = document.getElementById('purchased-table').getElementsByTagName('tbody').item(0);
-
+    sortData(tableData) {
         // Read table row nodes.
         var rowData = tableData.getElementsByTagName('tr');
 
@@ -92,7 +115,6 @@ class Purchased {
             }
         }
     }
-
 }
 
 

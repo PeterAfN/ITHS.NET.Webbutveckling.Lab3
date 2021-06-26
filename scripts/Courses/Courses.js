@@ -20,28 +20,46 @@ class Courses {
         allCourses = coursesAvailable;
         let _this = this;
         let mail = localStorage.getItem("WestcoastEducation_RegisteredEmail");
-        _this.getStudent(mail).then(student => {
-            let id = Object.values(student)[0].id;
-            _this.getCourses(id).then(coursesUser => {
-                let courses = Object.values(coursesUser)[0];
-                let bought = false;
-                for (let courseAvailable of coursesAvailable) {
-                    bought = false;
-                    for (const courseUser of courses) {
-                        if (courseUser.courseId === courseAvailable.id) {
-                            bought = true;
-                            break;
+        let isUserRegistered = localStorage.getItem("WestcoastEducation_IsUserRegistered");
+        console.log(`isUserRegistered=${isUserRegistered}`);
+        console.log(`RegisteredEmail=${mail}`);
+        // if (mail !== null && isUserRegistered === "true") {
+        if (isUserRegistered === "true") {
+            _this.getStudent(mail).then(student => {
+                let id = Object.values(student)[0].id;
+                _this.getCourses(id).then(coursesUser => {
+                    let courses = Object.values(coursesUser)[0];
+                    let bought = false;
+                    for (let courseAvailable of coursesAvailable) {
+                        bought = false;
+                        for (const courseUser of courses) {
+                            if (courseUser.courseId === courseAvailable.id) {
+                                bought = true;
+                                break;
+                            }
+                        }
+                        if (bought === false) {
+                            //List only courses not bought and active.
+                            if (courseAvailable.status === "aktiv") {
+                                _this.addRow(courseAvailable);
+                                _this.addEventListeners();
+                            }
+                            bought = false;
                         }
                     }
-                    if (bought === false) {
-                        //List only courses not bought.
-                        _this.addRow(courseAvailable);
-                        _this.addEventListeners();
-                        bought = false;
-                    }
-                }
+                });
             });
-        });
+        }
+        else this.createTableNotRegistered(coursesAvailable)
+    }
+
+    createTableNotRegistered(allCourses) {
+        for (let course of allCourses) {
+            if (course.status === "aktiv") {
+                this.addRow(course);
+            }
+        }
+        // this.addEventListeners();
     }
 
     async getStudent(mail) {
@@ -72,16 +90,16 @@ class Courses {
         tableCoursesContent.insertAdjacentHTML(
             "beforeend",
             `
-                <tr id="courses-row${course.id}">
-                    <td>${course.id}</td>
-                    <td>${course.titel}</td>
-                    <td>${course.description}</td>
-                    <td>${course.length}</td>
-                    <td>${course.difficulty}</td>
-                    <td>${course.price}</td>
-                    <td class="cart-btn-table add" title="Klicka för att lägga i kundvagnen."><i class="fas fa-cart-arrow-down fa-lg"></i> </td>
-                </tr>
-            `
+                    <tr id="courses-row${course.id}">
+                        <td>${course.id}</td>
+                        <td>${course.titel}</td>
+                        <td>${course.description}</td>
+                        <td>${course.length}</td>
+                        <td>${course.difficulty}</td>
+                        <td>${course.price}</td>
+                        <td class="cart-btn-table add" title="Klicka för att lägga i kundvagnen."><i class="fas fa-cart-arrow-down fa-lg"></i> </td>
+                    </tr>
+                `
         );
     }
 
