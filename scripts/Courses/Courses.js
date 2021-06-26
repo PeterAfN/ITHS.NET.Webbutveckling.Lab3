@@ -59,7 +59,6 @@ class Courses {
                 this.addRow(course);
             }
         }
-        // this.addEventListeners();
     }
 
     async getStudent(mail) {

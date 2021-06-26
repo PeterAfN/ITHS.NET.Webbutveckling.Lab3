@@ -66,10 +66,6 @@ class ShoppingCart {
         lastItem.addEventListener("click", () => {
             this.DeleteRowFromHTML(id);
             this.DeleteRowFromArray(id);
-            // let xpath = `//td[text()='${id}']`;
-            // let matchingElement = document.evaluate(xpath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
-            // let shoppingCartIcon = matchingElement.parentNode.lastElementChild;
-
             let matchingElement = document.querySelector(`#courses-row${id}`)
             let shoppingCartIcon = matchingElement.lastElementChild;
 
@@ -145,7 +141,6 @@ class ShoppingCart {
             );
 
             let priceNewItem = shoppingCartItems.find(x => x.id === Number(courseId)).price;
-            // let priceNewItem = shoppingCartItems[indexNewItem].price;
 
             if (add === true) {
                 element.textContent = Number(priceTotalCurrent) + Number(priceNewItem);

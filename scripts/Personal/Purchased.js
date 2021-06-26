@@ -84,7 +84,6 @@ class Purchased {
     addRowNotActive(course) {
         const tablePurchasedContent = document.querySelector("#table-purchased-not-active-content");
 
-        console.log(course);
         tablePurchasedContent.insertAdjacentHTML(
             "beforeend",
             `
