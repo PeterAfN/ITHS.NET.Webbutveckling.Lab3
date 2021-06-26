@@ -77,7 +77,6 @@ input[value] {
   gap: 10px;
   align-items: center;
   margin-top: 0rem;
-  /* margin: 1.3rem 3rem 1rem; */
 }
 
 #table-courses-container table {
@@ -134,9 +133,6 @@ input[value] {
   box-shadow: 0 0 60px 10px rgba(0, 0, 0, 0.9);
   border-radius: 3px;
   color: var(--secondary-color);
-  /* font-size: 2rem;
-  font-weight: 500; */
-  /* overflow: hidden; */
 }
 
 .modal-edit {
