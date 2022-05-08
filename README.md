@@ -1,14 +1,14 @@
+# ITHS.NET.Webbutveckling.Lab3
+ 
+Denna lab ingick i kursen "Webbutveckling med .NET 60p" på IT-Högskolan i Göteborg som jag läste våren år 2021.
+
+---------------------------------
+
 Instruktion för att starta den lokala REST-API servern:
 
 Kör detta kommando i terminalen: 
 
 json-server --watch "data\courses.json"      (du ska stå i roten av huvudmappen)
-
----------------------------------
-
-# ITHS.NET.Webbutveckling.Lab3
- 
-Denna lab ingick i kursen "Webbutveckling med .NET 60p" på IT-Högskolan i Göteborg som jag läste våren år 2021.
 
 ## Uppgiftsbeskrivningen för labb 3:
 I denna sista uppgift skall vi implementera databashantering och REST API i vår Westcoast Education applikation.
